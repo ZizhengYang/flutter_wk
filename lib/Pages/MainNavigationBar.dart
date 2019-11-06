@@ -49,6 +49,7 @@ class MainNavigationBarState extends State<MainNavigationBar> with TickerProvide
           ],
           controller: _pageController,
           onPageChanged: onPageChanged,
+          physics: NeverScrollableScrollPhysics(),
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: <BottomNavigationBarItem>[
