@@ -30,7 +30,7 @@ class UserTaskPage extends StatelessWidget {
             new Column(
               children: <Widget>[
                 new Container(
-                  color: Colors.lime[600],
+                  color: Colors.black,
                   alignment: Alignment.topCenter,
                   padding: EdgeInsets.only(top: 30, left: 5, right: 5, bottom: 5),
                   child: new Text(
@@ -38,13 +38,13 @@ class UserTaskPage extends StatelessWidget {
                     style: new TextStyle(
                         fontSize: 30.0,
                         fontWeight: FontWeight.w900,
-                        color: Colors.black,
+                        color: Colors.yellow[700],
                         decoration: TextDecoration.none
                     ),
                   ),
                 ),
                 new Container(
-                  color: Colors.lime[600],
+                  color: Colors.black,
                   alignment: Alignment.topCenter,
                   padding: EdgeInsets.only(top: 5, left: 20, right: 20, bottom: 5),
                   child: new Card(
@@ -73,13 +73,13 @@ class UserTaskPage extends StatelessWidget {
                   ),
                 ),
                 new Container(
-                  color: Colors.lime[600],
+                  color: Colors.black,
                   child: new Row(
                     children: <Widget>[
-                      new FlatButton(onPressed: () {}, child: new Text("推荐")),
-                      new FlatButton(onPressed: () {}, child: new Text("热门")),
-                      new FlatButton(onPressed: () {}, child: new Text("快赚")),
-                      new FlatButton(onPressed: () {}, child: new Text("分类"))
+                      new FlatButton(onPressed: () {}, child: new Text("推荐"), color: Colors.yellow[700]),
+                      new FlatButton(onPressed: () {}, child: new Text("热门"), color: Colors.yellow[700]),
+                      new FlatButton(onPressed: () {}, child: new Text("快赚"), color: Colors.yellow[700]),
+                      new FlatButton(onPressed: () {}, child: new Text("分类"), color: Colors.yellow[700])
                     ],
                   ),
                 ),

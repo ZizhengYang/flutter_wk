@@ -58,7 +58,7 @@ class MainNavigationBarState extends State<MainNavigationBar> with TickerProvide
             BottomNavigationBarItem(icon: new Icon(Icons.chat), title: Text("社区")),
             BottomNavigationBarItem(icon: new Icon(Icons.person), title: Text("我的"))
           ],
-          selectedItemColor: Colors.blue[400],
+          selectedItemColor: Colors.yellow[700],
           unselectedItemColor: Colors.grey[600],
           showUnselectedLabels: true,
           onTap: onTap,
