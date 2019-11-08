@@ -57,6 +57,23 @@ class UserTaskPage extends StatelessWidget {
                       ],
                   )
               ),
+              flexibleSpace: Container(
+                child: new FlatButton(
+                  onPressed: () {},
+                  child: new TextField(
+                    maxLines: 1,
+                    controller: _searchBoxContronller,
+                    style: new TextStyle(
+                      fontSize: 16.0,
+                    ),
+                    decoration: new InputDecoration(
+                      hintText: "搜索外快",
+                      contentPadding: EdgeInsets.all(6),
+                      border: InputBorder.none
+                    ),
+                  ),
+                ),
+              ),
               bottom: new TabBar(
                 indicatorWeight: 5,
                 indicatorPadding: EdgeInsets.only(left: 15, top: 0, right: 15, bottom: 0),
