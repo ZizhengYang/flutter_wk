@@ -21,7 +21,7 @@ class UserTaskPage extends StatelessWidget {
          * 页面主要内容
          */
           appBar: new PreferredSize(
-            preferredSize: Size(1000,120),
+            preferredSize: Size(1000,100),
             child: new AppBar(
               backgroundColor: Colors.black,
               title: Container(
@@ -83,19 +83,19 @@ class UserTaskPage extends StatelessWidget {
                 tabs: <Widget>[
                   new Tab(
                     text: "推荐",
-                    icon: new Icon(Icons.thumb_up, size: 20),
+//                    icon: new Icon(Icons.thumb_up, size: 20),
                   ),
                   new Tab(
                     text: "热门",
-                    icon: new Icon(Icons.whatshot, size: 20),
+//                    icon: new Icon(Icons.whatshot, size: 20),
                   ),
                   new Tab(
                     text: "快赚",
-                    icon: new Icon(Icons.fast_forward, size: 20),
+//                    icon: new Icon(Icons.fast_forward, size: 20),
                   ),
                   new Tab(
                     text: "分类",
-                    icon: new Icon(Icons.grid_on, size: 20),
+//                    icon: new Icon(Icons.grid_on, size: 20),
                   )
                 ],
               ),

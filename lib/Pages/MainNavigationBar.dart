@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import './UserSide/UserTaskPage.dart';
+import './UserSide/SkillInfoPage.dart';
+
 
 class MainNavigationBar extends StatefulWidget {
   @override
@@ -42,7 +44,7 @@ class MainNavigationBarState extends State<MainNavigationBar> with TickerProvide
         body: new PageView(
           children: <Widget>[
             new UserTaskPage(),
-            new UserTaskPage(),
+            new SkillInfoPage(),
             new UserTaskPage(),
             new UserTaskPage(),
             new UserTaskPage()
