@@ -23,6 +23,16 @@ CREATE TABLE IF NOT EXISTS `living_place` (
     `zip` MEDIUMINT(8) UNSIGNED NOT NULL
 );
 
+# CREATE TABLE IF NOT EXISTS ‘Education_carrer’ (
+#     'id' INT UNSIGNED NOT NULL auto_increment,
+#     'Bachelor_school' VARCHAR(64),
+#     'Bachelor_major' VARCHAR(64),
+#     'master_school' VARCHAR(64),
+#     'master_major' VARCHAR(64),
+#     'phd_school' VARCHAR(64),
+#     'phd_major' VARCHAR(64)
+# );
+
 CREATE DATABASE IF NOT EXISTS `OrganizationManagement`;
 USE `OrganizationManagement`;
 

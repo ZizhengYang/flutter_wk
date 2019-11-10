@@ -12,14 +12,11 @@ class UserTaskPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return new DefaultTabController(
       length: 4,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "waikuaiInfo",
-        home: new Scaffold(
+      child: new Scaffold(
           /*
-         * Page main part
-         * 页面主要内容
-         */
+           * Page main part
+           * 页面主要内容
+           */
           appBar: new PreferredSize(
             preferredSize: Size(1000,100),
             child: new AppBar(
@@ -110,7 +107,6 @@ class UserTaskPage extends StatelessWidget {
             ],
           ),
         ),
-      )
     );
   }
 
