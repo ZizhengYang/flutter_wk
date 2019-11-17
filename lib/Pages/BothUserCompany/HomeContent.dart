@@ -21,7 +21,7 @@ class HomeContent extends StatelessWidget {
                   child: Text("全民外快",
                       style: TextStyle(
                           fontSize: 60,
-                          color: Colors.orange[800],
+                          color: Colors.white,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic))),
             ),

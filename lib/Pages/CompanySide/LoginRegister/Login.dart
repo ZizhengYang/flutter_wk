@@ -10,7 +10,7 @@ class Login extends StatelessWidget{
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Second Screen"),
+        title: new Text("欢迎 使用 全民外快"),
         backgroundColor: Color(0xFF2D3447),
         leading: new IconButton(icon: Icon(Icons.keyboard_return), onPressed: () {Navigator.pop(context);}),
         elevation: 0
@@ -19,7 +19,7 @@ class Login extends StatelessWidget{
         children: <Widget>[
           new ClipPath(
             child: Container(
-                height: 60,
+                height: 260,
                 color: Color(0xFF2D3447)
             ),
             clipBehavior: Clip.antiAlias,
@@ -31,15 +31,15 @@ class Login extends StatelessWidget{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   new Container(
-                      margin: EdgeInsets.only(top: 80, left: 0, right: 0, bottom: 0),
+                      margin: EdgeInsets.only(top: 20, left: 0, right: 0, bottom: 20),
                       decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.all(Radius.elliptical(50, 50)),
-                        color: Colors.red
+                        borderRadius: new BorderRadius.all(Radius.elliptical(20, 20)),
+                        color: Colors.white,
+                        boxShadow: [BoxShadow(color: Color(0xFF000000), offset: Offset.zero, blurRadius: 4.0, spreadRadius: 0.0)]
                       ),
                       width: 300.0,
-                      height: 440.0,
-//                      color: Colors.red//Color(0xFF2D3447),
-                  ),
+                      height: 460.0,
+                  )
                 ],
               ),
               clipBehavior: Clip.antiAlias,
