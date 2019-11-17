@@ -73,3 +73,4 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - images/SearchIcon.png
+    - images/work.jpg
