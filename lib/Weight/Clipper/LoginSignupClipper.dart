@@ -10,7 +10,7 @@ class LoginSignupClipper extends CustomClipper<Path> {
 
     var path = Path();
 
-    path.addRRect(new RRect.fromLTRBR(10, 10, size.width, size.height, new Radius.circular(10.0)));
+//    path.addRRect(new RRect.fromLTRBR(10, 10, size.width, size.height, new Radius.circular(10.0)));
 
 //    path.moveTo(radiusSize, 0.0);
 //    path.lineTo(0.0, radiusSize);

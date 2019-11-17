@@ -12,8 +12,8 @@ class Login extends StatelessWidget{
       appBar: new AppBar(
         title: new Text("欢迎 使用 全民外快"),
         backgroundColor: Color(0xFF2D3447),
-        leading: new IconButton(icon: Icon(Icons.keyboard_return), onPressed: () {Navigator.pop(context);}),
-        elevation: 0
+//        leading: new IconButton(icon: Icon(Icons.keyboard_return), onPressed: () {Navigator.pop(context);}),
+        elevation: 0.0
       ),
       body: new Stack(
         children: <Widget>[
@@ -42,8 +42,8 @@ class Login extends StatelessWidget{
                   )
                 ],
               ),
-              clipBehavior: Clip.antiAlias,
-              clipper: LoginSignupClipper(),
+//              clipBehavior: Clip.antiAlias,
+//              clipper: LoginSignupClipper(),
             )
           )
         ],
