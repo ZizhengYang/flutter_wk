@@ -1,3 +1,5 @@
+import 'dart:ui' as prefix0;
+
 import 'package:flutter/material.dart';
 import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Login.dart';
 import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Register.dart';
@@ -67,28 +69,28 @@ class HomeContent extends StatelessWidget {
                     margin: EdgeInsets.only(
                         top: 10, left: 20, right: 20, bottom: 10),
                     child: RaisedButton(
-                      elevation: 2.0,
-                      // normal elevation
-                      highlightElevation: 8.0,
-                      // on press elevation
-                      color: Colors.orange[800],
-                      //Color(0xFF2D3447),
-                      highlightColor: Colors.yellow[600],
-                      textColor: Colors.white,
-                      colorBrightness: Brightness.light,
-                      splashColor: Colors.lime,
-                      child:
-                          Text(" 我 要 发 兼 职 ", style: TextStyle(fontSize: 27)),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0)),
-                      onPressed: () {
-                        Navigator.push(
+                        elevation: 2.0,
+                        // normal elevation
+                        highlightElevation: 8.0,
+                        // on press elevation
+                        color: Colors.orange[800],
+                        //Color(0xFF2D3447),
+                        highlightColor: Colors.yellow[600],
+                        textColor: Colors.white,
+                        colorBrightness: Brightness.light,
+                        splashColor: Colors.lime,
+                        child: Text(" 我 要 发 兼 职 ", style: TextStyle(fontSize: 27)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.0)),
+                        onPressed: () {
+                          Navigator.push(
                             context,
                             new MaterialPageRoute(
-                            builder: (context) => new Register()),
-                        );
-                      },
-                    ))
+                                builder: (context) => new Register()),
+                          );
+                        },
+                      ),
+                    )
               ],
             ),
           ],

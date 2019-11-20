@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_wai_kuai/Weight/Clipper/AppBarClipper.dart';
 import 'package:test_wai_kuai/Weight/Clipper/LoginSignupClipper.dart';
+import 'package:test_wai_kuai/Weight/Painter/LoginSignupPainter.dart';
 
 class Login extends StatelessWidget{
 
@@ -9,6 +10,7 @@ class Login extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      backgroundColor: Colors.grey[300],
       appBar: new AppBar(
         title: new Text("欢迎 使用 全民外快"),
         backgroundColor: Color(0xFF2D3447),
@@ -26,27 +28,35 @@ class Login extends StatelessWidget{
             clipper: AppBarClipper(),
           ),
           new Container(
-            child: new ClipPath(
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new Container(
-                      margin: EdgeInsets.only(top: 20, left: 0, right: 0, bottom: 20),
-                      decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.all(Radius.elliptical(20, 20)),
-                        color: Colors.white,
-                        boxShadow: [BoxShadow(color: Color(0xFF000000), offset: Offset.zero, blurRadius: 4.0, spreadRadius: 0.0)]
-                      ),
-                      width: 300.0,
-                      height: 460.0,
-                  )
-                ],
-              ),
-//              clipBehavior: Clip.antiAlias,
-//              clipper: LoginSignupClipper(),
-            )
+            margin: EdgeInsets.only(top: 40),
+            alignment: Alignment.topCenter,
+            child: new CustomPaint(
+              painter: new LoginSignupPainter(width: 300, height: 450),
+              size: new Size(300, 440),
+            ),
+          ),
+          new Column(
+//            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Center(
+                child: Container(
+                  height: 60,
+                  width: 60,
+                  margin: EdgeInsets.only(top: 420),
+                  child: new RaisedButton(
+                      elevation: 4.0,
+                      highlightElevation: 8.0,
+                      color: Color(0xFF2D3447),
+                      highlightColor: Colors.grey[300],
+                      shape: CircleBorder(side: BorderSide.none),
+                      child: Icon(Icons.navigate_next, color: Colors.white, size: 30.0),
+                      onPressed: () {}
+                  ),
+                )
+              )
+            ],
           )
-        ],
+        ]
       )
     );
   }
