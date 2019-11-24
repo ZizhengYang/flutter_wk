@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test_wai_kuai/Weight/Clipper/AppBarClipper.dart';
-import 'package:test_wai_kuai/Weight/Clipper/LoginSignupClipper.dart';
-import 'package:test_wai_kuai/Weight/Painter/LoginSignupPainter.dart';
+import 'package:test_wai_kuai/Pages/BothUserCompany/MainNavigationBar.dart';
+import 'package:test_wai_kuai/Util/Clipper/AppBarClipper.dart';
+import 'package:test_wai_kuai/Util/Clipper/LoginSignupClipper.dart';
+import 'package:test_wai_kuai/Util/Painter/LoginSignupPainter.dart';
 
 class Register extends StatelessWidget{
 
@@ -12,7 +13,7 @@ class Register extends StatelessWidget{
     return new Scaffold(
         backgroundColor: Colors.grey[300],
         appBar: new AppBar(
-            title: new Text("欢迎 加入 全民外快"),
+            title: new Text("欢迎 加入 赚小钱"),
             backgroundColor: Color(0xFF2D3447),
 //        leading: new IconButton(icon: Icon(Icons.keyboard_return), onPressed: () {Navigator.pop(context);}),
             elevation: 0.0
@@ -50,7 +51,13 @@ class Register extends StatelessWidget{
                             highlightColor: Colors.grey[300],
                             shape: CircleBorder(side: BorderSide.none),
                             child: Icon(Icons.navigate_next, color: Colors.white, size: 30.0),
-                            onPressed: () {}
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                new MaterialPageRoute(
+                                    builder: (context) => new MainNavigationBar()),
+                                );
+                            }
                         ),
                       )
                   )

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:test_wai_kuai/Pages/BothUserCompany/HomeContent.dart';
-import './Pages/MainNavigationBar.dart';
+import 'package:test_wai_kuai/Pages/BothUserCompany/OldHomeContent.dart';
+import 'Pages/BothUserCompany/MainNavigationBar.dart';
 
 void main() => runApp(new MainIntrance());
 

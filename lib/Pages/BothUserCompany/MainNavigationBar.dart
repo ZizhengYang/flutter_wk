@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './UserSide/UserTaskPage.dart';
-import './UserSide/SkillInfoPage.dart';
+import '../UserSide/UserTaskPage.dart';
+import '../UserSide/SkillInfoPage.dart';
 
 
 class MainNavigationBar extends StatefulWidget {
@@ -69,45 +69,6 @@ class MainNavigationBarState extends State<MainNavigationBar> with TickerProvide
           currentIndex: _currentPageNum,
         ),
       ),
-//      home: new Scaffold(
-//        body: new TabBarView(controller: controller, children: <Widget>[
-//          new UserTaskPage(),
-//          new UserTaskPage(),
-//          new UserTaskPage(),
-//          new UserTaskPage(),
-//          new UserTaskPage()
-//        ]),
-//        bottomNavigationBar: BottomNavigationBar(
-//            items: <BottomNavigationBarItem>[
-//              BottomNavigationBarItem(icon: new Icon(Icons.attach_money), title: Text("外快")),
-//              BottomNavigationBarItem(icon: new Icon(Icons.build), title: Text("技能")),
-//              BottomNavigationBarItem(icon: new Icon(Icons.work), title: Text("工作台")),
-//              BottomNavigationBarItem(icon: new Icon(Icons.chat), title: Text("社区")),
-//              BottomNavigationBarItem(icon: new Icon(Icons.person), title: Text("我的"))
-//            ],
-//            //fixedColor: Colors.blue,
-//            backgroundColor: Colors.blue,
-//            selectedItemColor: Colors.blue,
-//        ),
-//        bottomNavigationBar: new SizedBox(
-//          height: 50,
-//          child: new Material(
-//            color: Colors.blue,
-//            child: new TabBar(
-//              controller: controller,
-//              labelStyle: TextStyle(fontSize: 10),
-//              unselectedLabelStyle: TextStyle(fontSize: 0),
-//              tabs: <Tab>[
-//                new Tab(icon: new Icon(Icons.attach_money), text: "外快"),
-//                new Tab(icon: new Icon(Icons.build), text: "技能"),
-//                new Tab(icon: new Icon(Icons.work), text: "工作台"),
-//                new Tab(icon: new Icon(Icons.chat), text: "社区"),
-//                new Tab(icon: new Icon(Icons.person), text: "我的"),
-//              ],
-//            ),
-//          ),
-//        ),
-//      ),
     );
   }
 }
