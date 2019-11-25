@@ -77,6 +77,9 @@ flutter:
     - images/SearchIcon.png
     - images/work.jpg
     - images/logo.png
+    - images/business/101-meeting.png
+    - images/business/101-orders.png
+    -
 
 #  fonts: fonts/happyfont.ttf
   fonts:

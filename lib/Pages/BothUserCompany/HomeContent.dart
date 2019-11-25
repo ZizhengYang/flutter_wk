@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:test_wai_kuai/Weight/Button/GaussianBlurButton.dart';
 import 'package:test_wai_kuai/Weight/Text/AppTitle.dart';
 
 class HomeContent extends StatelessWidget {
@@ -20,7 +21,8 @@ class HomeContent extends StatelessWidget {
                 margin:
                     EdgeInsets.only(top: 70, left: 20, right: 20, bottom: 0),
                 child: new AppTitle(),
-              ))
+              )),
+              new GaussianBlurButton_RoundedSquare()
             ])));
   }
 }

@@ -5,10 +5,10 @@ import '../UserSide/SkillInfoPage.dart';
 
 class MainNavigationBar extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => MainNavigationBarState();
+  State<StatefulWidget> createState() => _MainNavigationBar_State();
 }
 
-class MainNavigationBarState extends State<MainNavigationBar> with TickerProviderStateMixin {
+class _MainNavigationBar_State extends State<MainNavigationBar> with TickerProviderStateMixin {
   PageController _pageController;
   int _currentPageNum;
 
