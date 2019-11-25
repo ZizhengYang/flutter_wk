@@ -93,9 +93,11 @@ import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Register.dart';
 //
 //}
 
-class GaussianBlurButton_RoundedSquare extends StatelessWidget {
+class PopIconButton_RoundedSquare extends StatelessWidget {
 
-  String image;
+  final String image;
+
+  const PopIconButton_RoundedSquare({Key key, this.image});
 
   @override
   Widget build(BuildContext context) {

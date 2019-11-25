@@ -74,7 +74,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
-    - images
+    - assets/images/
 #    - images/SearchIcon.png
 #    - images/work.jpg
 #    - images/logo.png
@@ -82,8 +82,7 @@ flutter:
 #    - images/business/101-orders.png
 #    - images/business
 
-#  fonts: fonts/happyfont.ttf
   fonts:
     - family: happyfont
       fonts:
-        - asset: fonts/happyfont.ttf
+        - asset: assets/fonts/happyfont.ttf

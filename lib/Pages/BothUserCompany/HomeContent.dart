@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:test_wai_kuai/Weight/Button/GaussianBlurButton.dart';
+import 'package:test_wai_kuai/Weight/Button/PopIconButton.dart';
 import 'package:test_wai_kuai/Weight/Text/AppTitle.dart';
 
 class HomeContent extends StatelessWidget {
@@ -11,7 +12,7 @@ class HomeContent extends StatelessWidget {
         body: Container(
             decoration: new BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage('images/work.jpg'),
+                    image: AssetImage('assets/images/work.jpg'),
                     colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.555), BlendMode.multiply),
                     fit: BoxFit.cover)),
@@ -22,7 +23,7 @@ class HomeContent extends StatelessWidget {
                     EdgeInsets.only(top: 70, left: 20, right: 20, bottom: 0),
                 child: new AppTitle(),
               )),
-              new GaussianBlurButton_RoundedSquare()
+              new PopIconButton_RoundedSquare(image: "assets/images/busniess/101-meeting.png")
             ])));
   }
 }

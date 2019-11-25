@@ -14,6 +14,8 @@ class GaussianBlurButton_RoundedSquare extends StatefulWidget {
   double blurWight;
   double highlightBlurwight;
 
+  GaussianBlurButton_RoundedSquare(String s);
+
   @override
   State<StatefulWidget> createState() {
     return _GaussianBlurButton_RoundedSquare_State();
