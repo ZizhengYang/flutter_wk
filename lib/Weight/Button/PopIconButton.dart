@@ -97,14 +97,18 @@ class PopIconButton_RoundedSquare extends StatelessWidget {
 
   final String image;
 
-  const PopIconButton_RoundedSquare({Key key, this.image});
+  const PopIconButton_RoundedSquare({Key key, String this.image});
 
   @override
   Widget build(BuildContext context) {
     return new Container(
-      child: RaisedButton(
+      child: new RaisedButton(
         child: new Container(
-          child: Image.asset(image),
+          decoration: new BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(image)
+            )
+          ),
         ),
       ),
     );

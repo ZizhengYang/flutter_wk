@@ -75,6 +75,8 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/
+    - assets/images/business/101-meeting.png
+    - images/images/business/101-orders.png
 #    - images/SearchIcon.png
 #    - images/work.jpg
 #    - images/logo.png

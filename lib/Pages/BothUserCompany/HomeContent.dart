@@ -23,7 +23,8 @@ class HomeContent extends StatelessWidget {
                     EdgeInsets.only(top: 70, left: 20, right: 20, bottom: 0),
                 child: new AppTitle(),
               )),
-              new PopIconButton_RoundedSquare(image: "assets/images/busniess/101-meeting.png")
+              new PopIconButton_RoundedSquare(image: "assets/images/business/101-meeting.png"),
+              new PopIconButton_RoundedSquare(image: "assets/images/business/101-orders.png")
             ])));
   }
 }
