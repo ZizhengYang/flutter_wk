@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:test_wai_kuai/Weight/Button/GaussianBlurButton.dart';
-import 'package:test_wai_kuai/Weight/Button/PopIconButton.dart';
-import 'package:test_wai_kuai/Weight/Text/AppTitle.dart';
+import 'package:test_wai_kuai/Widght/Button/GaussianBlurButton.dart';
+import 'package:test_wai_kuai/Widght/Button/PopIconButton.dart';
+import 'package:test_wai_kuai/Widght/Text/AppTitle.dart';
 
 class HomeContent extends StatelessWidget {
   @override

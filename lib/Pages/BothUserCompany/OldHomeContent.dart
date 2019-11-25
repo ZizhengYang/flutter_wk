@@ -4,7 +4,7 @@ import 'dart:ui' as prefix0;
 import 'package:flutter/material.dart';
 import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Login.dart';
 import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Register.dart';
-import 'package:test_wai_kuai/Weight/Text/AppTitle.dart';
+import 'package:test_wai_kuai/Widght/Text/AppTitle.dart';
 
 class OldHomeContent extends StatelessWidget {
   @override
