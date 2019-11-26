@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:test_wai_kuai/Pages/BothUserCompany/HomeContent.dart';
 import 'package:test_wai_kuai/Pages/BothUserCompany/OldHomeContent.dart';
 import 'Pages/BothUserCompany/MainNavigationBar.dart';
+import './Util/Route_Generator.dart';
 
 void main() => runApp(new MainIntrance());
 
@@ -11,7 +12,10 @@ class MainIntrance extends StatelessWidget {
     return new MaterialApp(
       // Remove the debug banner
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: '/',
+      // home: HomePage(),
+      onGenerateRoute: RouteGenerator.generateRoute
+
     );
   }
 }
