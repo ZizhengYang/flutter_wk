@@ -75,14 +75,9 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/
-    - assets/images/business/101-meeting.png
-    - images/images/business/101-orders.png
-#    - images/SearchIcon.png
-#    - images/work.jpg
-#    - images/logo.png
-#    - images/business/101-meeting.png
-#    - images/business/101-orders.png
-#    - images/business
+    - assets/images/business/
+    - assets/images/flatUI/
+    - assets/images/messager/
 
   fonts:
     - family: happyfont

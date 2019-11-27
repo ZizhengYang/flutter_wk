@@ -17,7 +17,6 @@ class _MainNavigationBar_State extends State<MainNavigationBar> with TickerProvi
     super.initState();
     _currentPageNum = 1;
     _pageController = new PageController(initialPage: this._currentPageNum);
-//    pageController  = TabController(vsync: this, length: 5);
   }
 
   void onPageChanged(int currentPageNum) {

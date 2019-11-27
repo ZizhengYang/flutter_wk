@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Register.dart';
 
 //class GaussianBlurButton_RoundedSquare extends MaterialButton {
@@ -96,21 +97,122 @@ import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Register.dart';
 class PopIconButton_RoundedSquare extends StatelessWidget {
 
   final String image;
+  final double size;
+  final double top;
+  final String text;
+  final String font;
+  final Widget target;
+  final double margin;
+  final BuildContext fatherContext;
 
-  const PopIconButton_RoundedSquare({Key key, String this.image});
+  const PopIconButton_RoundedSquare({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.target, this.margin, this.fatherContext});
 
   @override
   Widget build(BuildContext context) {
     return new Container(
-      child: new RaisedButton(
-        child: new Container(
-          decoration: new BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(image)
+      margin: EdgeInsets.only(top: this.top, left: this.margin, right: this.margin, bottom: 0),
+      child: new Column(
+        children: <Widget>[
+          new Container(
+            height: this.size,
+            width: this.size,
+            child: new RaisedButton(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
+              color: Colors.white,
+              elevation: 2.0,
+              highlightElevation: 8.0,
+              colorBrightness: Brightness.light,
+              onPressed: () {
+//                Navigator.of(context).push(Route())
+                Navigator.push(
+                  context,
+                  new MaterialPageRoute(
+                      builder: (fatherContext) => this.target
+                  ),
+                );
+              },
+//              child: new Image.asset(this.image, width: this.size, height: this.size, fit: BoxFit.contain)
+              child: new Container(
+                decoration: new BoxDecoration(
+                  image: DecorationImage(
+                      fit: BoxFit.scaleDown,
+                      image: AssetImage(this.image),
+                  )
+                ),
+              ),
             )
           ),
-        ),
-      ),
+          new Container(
+              margin: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
+              child: new Text(
+                this.text,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontFamily: this.font,
+                )
+              )
+          )
+        ],
+      )
+    );
+  }
+
+}
+
+class PopIconButton_RoundedSquare_return extends StatelessWidget {
+
+  final String image;
+  final double size;
+  final double top;
+  final String text;
+  final String font;
+  final double margin;
+
+  const PopIconButton_RoundedSquare_return({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.margin});
+
+  @override
+  Widget build(BuildContext context) {
+    return new Container(
+        margin: EdgeInsets.only(top: this.top, left: this.margin, right: this.margin, bottom: 0),
+        child: new Column(
+          children: <Widget>[
+            new Container(
+                height: this.size,
+                width: this.size,
+                child: new RaisedButton(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
+                  color: Colors.white,
+                  elevation: 2.0,
+                  highlightElevation: 8.0,
+                  colorBrightness: Brightness.light,
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+//              child: new Image.asset(this.image, width: this.size, height: this.size, fit: BoxFit.contain)
+                  child: new Container(
+                    decoration: new BoxDecoration(
+                        image: DecorationImage(
+                          fit: BoxFit.scaleDown,
+                          image: AssetImage(this.image),
+                        )
+                    ),
+                  ),
+                )
+            ),
+            new Container(
+                margin: EdgeInsets.only(top: 10, left: 0, right: 0, bottom: 0),
+                child: new Text(
+                    this.text,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontFamily: this.font,
+                    )
+                )
+            )
+          ],
+        )
     );
   }
 

@@ -1,14 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/ChooseLoginRegistion.dart';
-import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Login.dart';
-import 'package:test_wai_kuai/Pages/UserSide/ChooseLoginType.dart';
-import 'package:test_wai_kuai/Widght/Button/GaussianBlurButton.dart';
+import 'package:test_wai_kuai/Pages/UserSide/LoginType/PhoneLogin.dart';
+import 'package:test_wai_kuai/Pages/UserSide/LoginType/WechatLogin.dart';
 import 'package:test_wai_kuai/Widght/Button/PopIconButton.dart';
 import 'package:test_wai_kuai/Widght/Text/AppTitle.dart';
 
-class HomeContent extends StatelessWidget {
+class ChooseLoginType extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -22,24 +20,25 @@ class HomeContent extends StatelessWidget {
             child: new Column(children: <Widget>[
               new Center(
                   child: new Container(
-                margin:
+                    margin:
                     EdgeInsets.only(top: 70, left: 20, right: 20, bottom: 0),
-                child: new AppTitle(),
-              )),
-              new HomeContentChoices()
+                    child: new AppTitle(),
+                  )),
+              new ChooseLoginTypeChoices()
             ])));
   }
 }
 
-class HomeContentChoices extends StatelessWidget {
+class ChooseLoginTypeChoices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return new Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        new PopIconButton_RoundedSquare(image: 'assets/images/business/101-meeting.png', size: 120, top: 280, text: " 我 要 赚 外 快", target: ChooseLoginType(), margin: 20, fatherContext: context),
-        new PopIconButton_RoundedSquare(image: 'assets/images/business/101-orders.png', size: 120, top: 280, text: " 我 要 发 兼 职 ", target: ChooseLoginRegistion(), margin: 20, fatherContext: context)
+        new PopIconButton_RoundedSquare(image: 'assets/images/messager/035-wechat.png', size: 80, top: 300, text: " 微 信 登 录 ", target: WechatLogin(), margin: 8),
+        new PopIconButton_RoundedSquare(image: 'assets/images/flatUI/telephone.png', size: 80, top: 300, text: " 电 话 登 录 ", target: PhoneLogin(), margin: 8),
+        new PopIconButton_RoundedSquare_return(image: 'assets/images/flatUI/back.png', size: 80, top: 300, text: " 返 回 前 页 ", margin: 8)
       ],
     );
   }
