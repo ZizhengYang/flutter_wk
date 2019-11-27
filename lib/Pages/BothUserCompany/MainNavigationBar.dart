@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_wai_kuai/Pages/UserSide/CommunityPage.dart';
 import '../UserSide/UserTaskPage.dart';
 import '../UserSide/SkillInfoPage.dart';
 
@@ -45,7 +46,7 @@ class _MainNavigationBar_State extends State<MainNavigationBar> with TickerProvi
             new UserTaskPage(),
             new SkillInfoPage(),
             new UserTaskPage(),
-            new UserTaskPage(),
+            new CommunityPage(),
             new UserTaskPage()
           ],
           controller: _pageController,

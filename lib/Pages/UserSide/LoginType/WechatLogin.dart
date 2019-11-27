@@ -6,8 +6,6 @@ import 'package:test_wai_kuai/Util/Painter/LoginSignupPainter.dart';
 
 class WechatLogin extends StatelessWidget{
 
-  int loginType;
-
   @override
   Widget build(BuildContext context) {
     return new Scaffold(

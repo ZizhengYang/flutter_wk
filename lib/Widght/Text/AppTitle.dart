@@ -36,7 +36,7 @@ class AppTitle extends StatelessWidget {
   Widget generateName() {
     return new Text(appName,
         style: new TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontSize: getPrimaryFontSize(),
             fontFamily: textFont));
   }
