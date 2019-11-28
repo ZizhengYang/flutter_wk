@@ -19,11 +19,12 @@ class SkillInfoPage extends StatelessWidget {
             appBar: new PreferredSize(
                 preferredSize: Size(1000,100),
                 child: new AppBar(
-                  backgroundColor: Colors.black,
+                  backgroundColor: Color(0xFF2D3447),
                   title: Container(
                       alignment: Alignment.topCenter,
                       child: new Column(
                         children: <Widget>[
+                          new Container(height: 10),
                           new Text(
                             "技能信息",
                             style: new TextStyle(
@@ -46,7 +47,7 @@ class SkillInfoPage extends StatelessWidget {
                           fontSize: 16.0,
                         ),
                         decoration: new InputDecoration(
-                            hintText: "搜索外快",
+                            hintText: "",
                             contentPadding: EdgeInsets.all(6),
                             border: InputBorder.none
                         ),
@@ -54,7 +55,7 @@ class SkillInfoPage extends StatelessWidget {
                     ),
                   ),
                   bottom: new TabBar(
-                    indicatorWeight: 5,
+                    indicatorWeight: 2,
                     indicatorPadding: EdgeInsets.only(left: 15, top: 0, right: 15, bottom: 0),
                     indicatorColor: Colors.yellow[700],
                     labelColor: Colors.yellow[700],

@@ -20,11 +20,12 @@ class UserTaskPage extends StatelessWidget {
           appBar: new PreferredSize(
             preferredSize: Size(1000,100),
             child: new AppBar(
-              backgroundColor: Colors.black,
+              backgroundColor: Color(0xFF2D3447),
               title: Container(
                   alignment: Alignment.topCenter,
                   child: new Column(
                       children: <Widget>[
+                        new Container(height: 10),
                         new Text(
                           "外快信息",
                           style: new TextStyle(
@@ -34,23 +35,6 @@ class UserTaskPage extends StatelessWidget {
                               decoration: TextDecoration.none
                           ),
                         ),
-//                        new Container(
-//                          child: new FlatButton(
-//                            onPressed: () {},
-//                            child: new TextField(
-//                              maxLines: 1,
-//                              controller: _searchBoxContronller,
-//                              style: new TextStyle(
-//                                fontSize: 16.0,
-//                              ),
-//                              decoration: new InputDecoration(
-//                                  hintText: "搜索外快",
-//                                  contentPadding: EdgeInsets.all(6),
-//                                  border: InputBorder.none
-//                              ),
-//                            ),
-//                          ),
-//                        )
                       ],
                   )
               ),
@@ -64,7 +48,7 @@ class UserTaskPage extends StatelessWidget {
                       fontSize: 16.0,
                     ),
                     decoration: new InputDecoration(
-                      hintText: "搜索外快",
+                      hintText: "",
                       contentPadding: EdgeInsets.all(6),
                       border: InputBorder.none
                     ),
@@ -72,7 +56,7 @@ class UserTaskPage extends StatelessWidget {
                 ),
               ),
               bottom: new TabBar(
-                indicatorWeight: 5,
+                indicatorWeight: 2,
                 indicatorPadding: EdgeInsets.only(left: 15, top: 0, right: 15, bottom: 0),
                 indicatorColor: Colors.yellow[700],
                 labelColor: Colors.yellow[700],
@@ -100,10 +84,10 @@ class UserTaskPage extends StatelessWidget {
           ),
           body: new TabBarView(
             children: <Widget>[
-              new CategoryTask(),
-              new EasyMoneyTask(),
+              new RecommendationTask(),
               new HotTask(),
-              new RecommendationTask()
+              new EasyMoneyTask(),
+              new CategoryTask()
             ],
           ),
         ),
@@ -130,7 +114,6 @@ class UserTaskPage extends StatelessWidget {
 //  State<StatefulWidget> createState() => new UserTaskAppBarState();
 //
 //  @override
-//  // TODO: implement preferredSize
 //  Size get preferredSize => Size.fromHeight(height);//这里设置控件（appBar）的高度
 //
 //}

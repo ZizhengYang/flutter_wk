@@ -103,8 +103,9 @@ class PopIconButton_RoundedSquare extends StatelessWidget {
   final String font;
   final Widget target;
   final double margin;
+  final String tag;
 
-  const PopIconButton_RoundedSquare({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.target, this.margin});
+  const PopIconButton_RoundedSquare({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.target, this.margin, this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +117,7 @@ class PopIconButton_RoundedSquare extends StatelessWidget {
             height: this.size,
             width: this.size,
             child: new FloatingActionButton(
+              heroTag: this.tag,
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
               backgroundColor: Colors.white,
               elevation: 2.0,
@@ -168,8 +170,9 @@ class PopIconButton_RoundedSquare_return extends StatelessWidget {
   final String text;
   final String font;
   final double margin;
+  final String tag;
 
-  const PopIconButton_RoundedSquare_return({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.margin});
+  const PopIconButton_RoundedSquare_return({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.margin, this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -227,8 +230,9 @@ class PopIconButton_RoundedSquare_function extends StatelessWidget {
   final String font;
   final VoidCallback target;
   final double margin;
+  final String tag;
 
-  const PopIconButton_RoundedSquare_function({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.target, this.margin});
+  const PopIconButton_RoundedSquare_function({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.target, this.margin, this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -240,6 +244,7 @@ class PopIconButton_RoundedSquare_function extends StatelessWidget {
                 height: this.size,
                 width: this.size,
                 child: new FloatingActionButton(
+                  heroTag: this.tag,
                   shape: CircleBorder(),
 //                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
 //                  color: Colors.white,
@@ -292,8 +297,9 @@ class PopIconButton_RoundedSquare_function_return extends StatelessWidget {
   final String font;
   final VoidCallback target;
   final double margin;
+  final String tag;
 
-  const PopIconButton_RoundedSquare_function_return({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.target, this.margin});
+  const PopIconButton_RoundedSquare_function_return({Key key, this.image, this.size, this.top, this.text, this.font='happyfont', this.target, this.margin, this.tag});
 
   @override
   Widget build(BuildContext context) {
@@ -305,6 +311,7 @@ class PopIconButton_RoundedSquare_function_return extends StatelessWidget {
                 height: this.size,
                 width: this.size,
                 child: new FloatingActionButton(
+                  heroTag: this.tag,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50.0)),
                   backgroundColor: Colors.white,
                   elevation: 4.0,

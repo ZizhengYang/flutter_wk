@@ -61,8 +61,8 @@ class _MainNavigationBar_State extends State<MainNavigationBar> with TickerProvi
             BottomNavigationBarItem(icon: new Icon(Icons.chat), title: Text("社区")),
             BottomNavigationBarItem(icon: new Icon(Icons.person), title: Text("我的"))
           ],
-          selectedItemColor: Colors.yellow[700],
-          unselectedItemColor: Colors.grey[600],
+          selectedItemColor: Color.fromARGB(255, 248, 130, 0),
+          unselectedItemColor: Color(0xFF2D3447),
           showUnselectedLabels: true,
           onTap: onTap,
           type: BottomNavigationBarType.fixed,

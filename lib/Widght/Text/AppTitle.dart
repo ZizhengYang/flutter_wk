@@ -36,7 +36,7 @@ class AppTitle extends StatelessWidget {
   Widget generateName() {
     return new Text(appName,
         style: new TextStyle(
-            color: Colors.black,
+            color: Color(0xFF2D3447),
             fontSize: getPrimaryFontSize(),
             fontFamily: textFont));
   }
@@ -44,7 +44,8 @@ class AppTitle extends StatelessWidget {
   Widget generateMotto() {
     return new Text(appMotto,
         style: new TextStyle(
-            color: Color.fromARGB(255, 248, 130, 0),
+//            color: Color.fromARGB(255, 248, 130, 0),
+            color: Color(0xFF2D3447),
             fontSize: getSecondaryFontSize(),
             fontFamily: textFont));
   }
@@ -69,17 +70,17 @@ class AppTitle extends StatelessWidget {
   double getSecondaryFontSize() {
     switch (this.size) {
       case 1:
-        return 10;
+        return 5;
       case 2:
-        return 20;
+        return 15;
       case 3:
-        return 30;
+        return 25;
       case 4:
-        return 40;
+        return 35;
       case 5:
-        return 60;
+        return 55;
       default:
-        return 30;
+        return 25;
     }
   }
 }
