@@ -80,7 +80,7 @@ class HomeContentState extends State<HomeContent> with SingleTickerProviderState
                             boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 2, spreadRadius: 0.5)],
                             borderRadius: BorderRadius.circular(20.0)
                         ),
-                        margin: EdgeInsets.only(top: 280, left: 20, right: 20, bottom: 0),//280
+                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.43, left: 20, right: 20, bottom: 0),//280
                         padding: EdgeInsets.only(top: 20, left: 0, right: 0, bottom: 20),
                         child: _currentSelection,
 //                      child: new Material(

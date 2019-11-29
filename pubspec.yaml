@@ -78,6 +78,7 @@ flutter:
     - assets/images/business/
     - assets/images/flatUI/
     - assets/images/messager/
+    - assets/TestImage/techFirm/
 
   fonts:
     - family: happyfont
