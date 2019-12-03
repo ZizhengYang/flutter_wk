@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:test_wai_kuai/Model/Model.dart';
 import 'package:test_wai_kuai/Pages/BothUserCompany/MainNavigationBar.dart';
+import 'package:test_wai_kuai/Pages/UserSide/Legal/LoginHelp.dart';
+import 'package:test_wai_kuai/Pages/UserSide/Legal/PrivacyAgreement.dart';
+import 'package:test_wai_kuai/Pages/UserSide/Legal/UserAgreement.dart';
 import 'package:test_wai_kuai/Util/Clipper/AppBarClipper.dart';
 import 'package:test_wai_kuai/Util/Painter/LoginSignupPainter.dart';
 
@@ -33,8 +37,8 @@ class PhoneLoginState extends State<PhoneLogin> {
             margin: EdgeInsets.only(top: 0),
             alignment: Alignment.topCenter,
             child: new CustomPaint(
-              painter: new LoginSignupPainter(width: 300, height: 520),
-              size: new Size(300, 520),
+              painter: new LoginSignupPainter(width: 320, height: 520),
+              size: new Size(320, 520),
             ),
           ),
           new Stack(
@@ -45,7 +49,7 @@ class PhoneLoginState extends State<PhoneLogin> {
                     child: new Column(
                         children: <Widget>[
                           new Container(
-                              margin: EdgeInsets.only(top: 50),
+                              margin: EdgeInsets.only(top: 30),
                               child: new Text(
                                   "登录/注册",
                                   style: TextStyle(
@@ -63,17 +67,23 @@ class PhoneLoginState extends State<PhoneLogin> {
                           ),
                           _buildTextField(this._textController1, "手机号", 100),
                           new Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(left: 50),
                               child: new Text(
                                   "我们会保证您的个人隐私信息安全",
                                   style: TextStyle(
+                                      fontSize: 12,
                                       color: Colors.grey,
                                   ))
                           ),
                           _buildTextField(this._textController2, "验证码", 100),
                           new Container(
+                              alignment: Alignment.topLeft,
+                              margin: EdgeInsets.only(left: 50),
                               child: new Text(
                                   "请输入您从手获得的短信验证码",
                                   style: TextStyle(
+                                    fontSize: 12,
                                     color: Colors.grey,
                                   ))
                           ),
@@ -88,7 +98,12 @@ class PhoneLoginState extends State<PhoneLogin> {
                                         style: TextStyle(
                                           color: Colors.blue,
                                         )),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                      context,
+                                      new MaterialPageRoute(
+                                          builder: (context) => new UserAgreement()),
+                                    );},
                                   ),
                                   FlatButton(
                                     child: new Text(
@@ -96,7 +111,12 @@ class PhoneLoginState extends State<PhoneLogin> {
                                         style: TextStyle(
                                           color: Colors.blue,
                                         )),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) => new PrivacyAgreement()),
+                                      );},
                                   ),
                                   FlatButton(
                                     child: new Text(
@@ -104,7 +124,12 @@ class PhoneLoginState extends State<PhoneLogin> {
                                         style: TextStyle(
                                           color: Colors.blue,
                                         )),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        new MaterialPageRoute(
+                                            builder: (context) => new LoginHelp()),
+                                      );},
                                   )
                                 ],
                               ),
@@ -125,6 +150,10 @@ class PhoneLoginState extends State<PhoneLogin> {
                     child: Icon(Icons.navigate_next,
                         color: Colors.white, size: 30.0),
                     onPressed: () {
+                      User user = new User();
+                      user.phoneNum = this._textController1.text;
+                      user.verificationCode = this._textController2.text;
+                      user.login();
                       Navigator.push(
                         context,
                         new MaterialPageRoute(
@@ -143,7 +172,7 @@ class PhoneLoginState extends State<PhoneLogin> {
             margin: EdgeInsets.only(top: 30.0),
             color: Colors.white,
             width: width,
-            constraints: BoxConstraints(minWidth: 230.0, minHeight: 25.0),
+            constraints: BoxConstraints(minWidth: 280.0, minHeight: 25.0),
             child: new Theme(
               data: ThemeData(primaryColor: Color(0xFF2D3447), hintColor: Color(0xFF2D3447)),
               child: new TextField(

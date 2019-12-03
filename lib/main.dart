@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test_wai_kuai/Model/Model.dart';
 import 'package:test_wai_kuai/Pages/BothUserCompany/HomeContent.dart';
 import 'package:test_wai_kuai/Pages/BothUserCompany/OldHomeContent.dart';
 import 'Pages/BothUserCompany/MainNavigationBar.dart';
@@ -10,6 +11,7 @@ class MainIntrance extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    LogTests().test();
     return new MaterialApp(
       // Remove the debug banner
       debugShowCheckedModeBanner: false,
@@ -30,5 +32,13 @@ class HomePage extends StatelessWidget {
     return Container(
       child: HomeContent(),
     );
+  }
+}
+
+class LogTests {
+  void test() {
+    User u = new User();
+    String s = u.getJSON();
+    print(s);
   }
 }

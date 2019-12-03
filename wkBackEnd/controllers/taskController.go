@@ -33,14 +33,14 @@ func (c *TaskController) Add() {
 
 func (c *TaskController) Delete() {
 	t := new(models.Task)
-	json.Unmarshal(c.Ctx.Input.RequestBody, &t)
-	t.AddTask()
+	_ = json.Unmarshal(c.Ctx.Input.RequestBody, &t)
+	_, _ = t.AddTask()
 }
 
 func (c *TaskController) Set() {
 	t := new(models.Task)
-	json.Unmarshal(c.Ctx.Input.RequestBody, &t)
-	t.AddTask()
+	_ = json.Unmarshal(c.Ctx.Input.RequestBody, &t)
+	_, _ = t.AddTask()
 }
 
 func (c *TaskController) Get() {

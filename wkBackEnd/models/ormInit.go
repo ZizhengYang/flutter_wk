@@ -6,4 +6,5 @@ import (
 
 func init() {
 	orm.RegisterModel(new(Task))
+	orm.RegisterModel(new(User))
 }

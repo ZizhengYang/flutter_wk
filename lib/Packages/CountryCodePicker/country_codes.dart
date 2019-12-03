@@ -49,11 +49,7 @@ List<Map> codes = [
   {"name": "Colombia", "code": "CO", "dial_code": "+57"},
   {"name": "Komori", "code": "KM", "dial_code": "+269"},
   {"name": "République du Congo", "code": "CG", "dial_code": "+242"},
-  {
-    "name": "République démocratique du Congo",
-    "code": "CD",
-    "dial_code": "+243"
-  },
+  {"name": "République démocratique du Congo", "code": "CD", "dial_code": "+243"},
   {"name": "Cook Islands", "code": "CK", "dial_code": "+682"},
   {"name": "Costa Rica", "code": "CR", "dial_code": "+506"},
   {"name": "Côte d'Ivoire", "code": "CI", "dial_code": "+225"},
@@ -79,11 +75,7 @@ List<Map> codes = [
   {"name": "France", "code": "FR", "dial_code": "+33"},
   {"name": "Guyane française", "code": "GF", "dial_code": "+594"},
   {"name": "Polynésie française", "code": "PF", "dial_code": "+689"},
-  {
-    "name": "Territoire des Terres australes et antarctiques fr",
-    "code": "TF",
-    "dial_code": "+262"
-  },
+  {"name": "Territoire des Terres australes et antarctiques fr", "code": "TF", "dial_code": "+262"},
   {"name": "Gabon", "code": "GA", "dial_code": "+241"},
   {"name": "Gambia", "code": "GM", "dial_code": "+220"},
   {"name": "საქართველო", "code": "GE", "dial_code": "+995"},
@@ -101,11 +93,7 @@ List<Map> codes = [
   {"name": "Guiné-Bissau", "code": "GW", "dial_code": "+245"},
   {"name": "Guyana", "code": "GY", "dial_code": "+592"},
   {"name": "Haïti", "code": "HT", "dial_code": "+509"},
-  {
-    "name": "Heard Island and McDonald Islands",
-    "code": "HM",
-    "dial_code": "+0"
-  },
+  {"name": "Heard Island and McDonald Islands", "code": "HM", "dial_code": "+0"},
   {"name": "Vaticano", "code": "VA", "dial_code": "+379"},
   {"name": "Honduras", "code": "HN", "dial_code": "+504"},
   {"name": "香港(中国)", "code": "HK", "dial_code": "+852"},

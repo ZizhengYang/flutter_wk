@@ -6,10 +6,12 @@ import (
 )
 
 func init() {
+	beego.Include(&controllers.TaskController{})
     beego.Router("/", &controllers.MainController{})
     // User router
-	beego.Router("/user/login", &controllers.MainController{})
-	beego.Router("/user/signup", &controllers.MainController{})
+    beego.Router("/user/login", &controllers.TaskController{})
+	//beego.Router("/user/login", &controllers.TaskController{})
+	//beego.Router("/user/signup", &controllers.MainController{})
 	beego.Router("/user/delete", &controllers.MainController{})
     // Organization router
 	beego.Router("/organization/login", &controllers.MainController{})
