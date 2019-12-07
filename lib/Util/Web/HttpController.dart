@@ -20,6 +20,7 @@ class HttpController {
     var httpClient = new HttpClient();
     var request = await httpClient.postUrl(Uri.parse(url));
     request.add(utf8.encode(json.encode(params)));
+    print(utf8.encode(json.encode(params)));
     var response = await request.close();
     if (response.statusCode == 200) {
       var responseBody = await response.transform(utf8.decoder).join();

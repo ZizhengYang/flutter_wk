@@ -1,50 +1,58 @@
 package controllers
 
 import (
-	"encoding/json"
 	"github.com/astaxie/beego"
-	"wkBackEnd/models"
+	models "wkBackEnd/models"
+	"wkBackEnd/utils/constant"
+	"wkBackEnd/utils/feedback"
 )
 
-type UserController struct {
+// Operations about Users
+type AlphaUserController struct {
 	beego.Controller
 }
 
-func getJsonUserData(c *UserController) *models.User {
-	t := new(models.User)
-	err := json.Unmarshal(c.Ctx.Input.RequestBody, &t)
-	if err != nil {
-		print("[JSON]Get json [task] data success")
+// @Title CreateUser
+// @Description create users
+// @Param	body		body 	models.User	true		"body for user content"
+// @Success 200 {int} models.User.Id
+// @Failure 403 body is empty
+// @router / [post]
+func (u *AlphaUserController) Login() {
+	user := new(models.AlphaUser)
+	user.PhoneNum = u.GetString("phoneNum")
+	//print(user.PhoneNum+"\n")
+	//print(constant.Alpha_accessCode+"\n")
+	//print(u.GetString("verificationCode")+"\n")
+	if u.GetString("verificationCode") == constant.Alpha_accessCode {
+		if user.Login() {
+			print(feedback.Login_success+"\n")
+			u.Data["json"] = map[string]string{"feedback": feedback.Login_success}
+		} else {
+			print(feedback.Login_fail_no_user+"1"+"\n")
+			u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
+		}
 	} else {
-		print(err)
+		print(feedback.Login_fail_no_user+"2"+"\n")
+		u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
 	}
-	return t
+	u.ServeJSON()
 }
 
-func (c *UserController) Add() {
-	t := getJsonUserData(c)
-	id, err := t.AddUser()
-	if err != nil {
-		print("[User]Insert new user " + string(id) + " success")
+func (u *AlphaUserController) Signup() {
+	user := new(models.AlphaUser)
+	user.PhoneNum = u.GetString("phoneNum")
+	if u.GetString("verificationCode") == constant.Alpha_accessCode {
+		if user.Login() {
+			print(feedback.Login_success+"\n")
+			u.Data["json"] = map[string]string{"feedback": feedback.Login_success}
+		} else {
+			print(feedback.Login_fail_no_user+"1"+"\n")
+			u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
+		}
 	} else {
-		print(err)
+		print(feedback.Login_fail_no_user+"2"+"\n")
+		u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
 	}
-}
-
-func (c *UserController) Delete() {
-	t := new(models.Task)
-	_ = json.Unmarshal(c.Ctx.Input.RequestBody, &t)
-	_, _ = t.AddTask()
-}
-
-func (c *UserController) Set() {
-	t := new(models.Task)
-	_ = json.Unmarshal(c.Ctx.Input.RequestBody, &t)
-	_, _ = t.AddTask()
-}
-
-func (c *UserController) Get() {
-	c.Data["Website"] = "beego.me"
-	c.Data["Email"] = "astaxie@gmail.com"
-	c.TplName = "index.tpl"
+	u.ServeJSON()
 }
