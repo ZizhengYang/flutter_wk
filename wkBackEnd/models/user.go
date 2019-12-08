@@ -6,12 +6,55 @@ import (
 )
 
 type Profile struct {
+	Id			int
 	Gender  	string
-	Age     	int
+	Age     	string
 	Address 	string
 	Email   	string
 	motto		string
 	Intro 		string
+	AlphaUser	*AlphaUser	`orm:"reverse(one)"`
+}
+
+type CreditCard struct {
+	Id 			int
+	CardName	string
+	CardNum		string
+	expDate		string
+	SecurityNum	string
+	AlphaUser	[]*AlphaUser	`orm:"reverse(many)"`
+}
+
+type CompanyExperience struct {
+	Id 			int
+	Company		string
+	Position	string
+	StartYear	string
+	EndYear		string
+	StartMonth	string
+	EndMonth	string
+	Resume		*Resume					`orm:"reverse(one)"`
+}
+
+type Education struct {
+	Id 			int
+	College		string
+	Degree		string
+	Major		string
+	Minor1		string
+	Minor2		string
+	StartYear	string
+	EndYear		string
+	StartMonth	string
+	EndMonth	string
+	Resume		*Resume		`orm:"reverse(one)"`
+}
+
+type Resume struct {
+	Id 			int
+	AlphaUser	*AlphaUser			`orm:"reverse(one)"`
+	Experience	*CompanyExperience	`orm:"rel(one)"`
+	Education	*Education			`orm:"rel(one)"`
 }
 
 type AlphaUser struct {
@@ -19,15 +62,12 @@ type AlphaUser struct {
 	Avatar 	 	string
 	Username 	string
 	PhoneNum 	string
-	//Profile  	Profile
+	Profile  	*Profile	`orm:"rel(one)"`
+	CreditCard	*CreditCard	`orm:"rel(fk)"`
+	Resume		*Resume		`orm:"rel(one)"`
 }
 
 func (this *AlphaUser) Login() bool {
-	//_ = orm.RegisterDriver("mysql", orm.DRMySQL)
-	//_ = orm.RegisterDataBase("default", "mysql", sql.Set_mysql_wk("wk_admin"))
-	//_ = orm.RegisterDataBase("user", "mysql", sql.Set_mysql_wk("wk_user"))
-	//orm.RegisterModel(new(AlphaUser))
-	//_ = orm.RunSyncdb("user", false, true)
 	o := orm.NewOrm()
 	if o.Using("user") == nil {
 		if o.Read(this) == nil {
@@ -37,5 +77,19 @@ func (this *AlphaUser) Login() bool {
 		}
 	} else {
 		return false
+	}
+}
+
+func (this *AlphaUser) Signup() (int64, bool) {
+	o := orm.NewOrm()
+	if o.Using("user") == nil {
+		id, err := o.Insert(this)
+		if err == nil {
+			return id, true
+		} else {
+			return id, false
+		}
+	} else {
+		return -1, false
 	}
 }

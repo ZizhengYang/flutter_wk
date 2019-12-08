@@ -4,7 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	models "wkBackEnd/models"
 	"wkBackEnd/utils/constant"
-	"wkBackEnd/utils/feedback"
+	"wkBackEnd/utils/logger"
 )
 
 // Operations about Users
@@ -21,20 +21,18 @@ type AlphaUserController struct {
 func (u *AlphaUserController) Login() {
 	user := new(models.AlphaUser)
 	user.PhoneNum = u.GetString("phoneNum")
-	//print(user.PhoneNum+"\n")
-	//print(constant.Alpha_accessCode+"\n")
-	//print(u.GetString("verificationCode")+"\n")
+	ip := u.Ctx.Input.IP()
 	if u.GetString("verificationCode") == constant.Alpha_accessCode {
 		if user.Login() {
-			print(feedback.Login_success+"\n")
-			u.Data["json"] = map[string]string{"feedback": feedback.Login_success}
+			//print(feedback.Login_success+"\n")
+			logger.Log_Success_Console(user.PhoneNum, ip)
 		} else {
-			print(feedback.Login_fail_no_user+"1"+"\n")
-			u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
+			//print(feedback.Login_fail_no_user+"1"+"\n")
+			logger.Log_Fail_Console(user.PhoneNum, ip)
 		}
 	} else {
-		print(feedback.Login_fail_no_user+"2"+"\n")
-		u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
+		//print(feedback.Login_fail_no_user+"2"+"\n")
+		logger.Log_Fail_Console(user.PhoneNum, ip)
 	}
 	u.ServeJSON()
 }
@@ -42,17 +40,18 @@ func (u *AlphaUserController) Login() {
 func (u *AlphaUserController) Signup() {
 	user := new(models.AlphaUser)
 	user.PhoneNum = u.GetString("phoneNum")
+	ip := u.Ctx.Input.IP()
 	if u.GetString("verificationCode") == constant.Alpha_accessCode {
 		if user.Login() {
-			print(feedback.Login_success+"\n")
-			u.Data["json"] = map[string]string{"feedback": feedback.Login_success}
+			//print(feedback.Login_success+"\n")
+			logger.Log_Success_Console(user.PhoneNum, ip)
 		} else {
-			print(feedback.Login_fail_no_user+"1"+"\n")
-			u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
+			//print(feedback.Login_fail_no_user+"1"+"\n")
+			logger.Log_Fail_Console(user.PhoneNum, ip)
 		}
 	} else {
-		print(feedback.Login_fail_no_user+"2"+"\n")
-		u.Data["json"] = map[string]string{"feedback": feedback.Login_fail_no_user}
+		//print(feedback.Login_fail_no_user+"2"+"\n")
+		logger.Log_Fail_Console(user.PhoneNum, ip)
 	}
 	u.ServeJSON()
 }
