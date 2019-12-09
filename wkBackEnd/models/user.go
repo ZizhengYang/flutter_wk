@@ -16,46 +16,46 @@ type Profile struct {
 	AlphaUser	*AlphaUser	`orm:"reverse(one)"`
 }
 
-type CreditCard struct {
-	Id 			int
-	CardName	string
-	CardNum		string
-	expDate		string
-	SecurityNum	string
-	AlphaUser	[]*AlphaUser	`orm:"reverse(many)"`
-}
-
-type CompanyExperience struct {
-	Id 			int
-	Company		string
-	Position	string
-	StartYear	string
-	EndYear		string
-	StartMonth	string
-	EndMonth	string
-	Resume		*Resume					`orm:"reverse(one)"`
-}
-
-type Education struct {
-	Id 			int
-	College		string
-	Degree		string
-	Major		string
-	Minor1		string
-	Minor2		string
-	StartYear	string
-	EndYear		string
-	StartMonth	string
-	EndMonth	string
-	Resume		*Resume		`orm:"reverse(one)"`
-}
-
-type Resume struct {
-	Id 			int
-	AlphaUser	*AlphaUser			`orm:"reverse(one)"`
-	Experience	*CompanyExperience	`orm:"rel(one)"`
-	Education	*Education			`orm:"rel(one)"`
-}
+//type CreditCard struct {
+//	Id 			int
+//	CardName	string
+//	CardNum		string
+//	expDate		string
+//	SecurityNum	string
+//	AlphaUser	[]*AlphaUser	`orm:"reverse(many)"`
+//}
+//
+//type CompanyExperience struct {
+//	Id 			int
+//	Company		string
+//	Position	string
+//	StartYear	string
+//	EndYear		string
+//	StartMonth	string
+//	EndMonth	string
+//	Resume		*Resume					`orm:"reverse(one)"`
+//}
+//
+//type Education struct {
+//	Id 			int
+//	College		string
+//	Degree		string
+//	Major		string
+//	Minor1		string
+//	Minor2		string
+//	StartYear	string
+//	EndYear		string
+//	StartMonth	string
+//	EndMonth	string
+//	Resume		*Resume		`orm:"reverse(one)"`
+//}
+//
+//type Resume struct {
+//	Id 			int
+//	AlphaUser	*AlphaUser			`orm:"reverse(one)"`
+//	Experience	*CompanyExperience	`orm:"rel(one)"`
+//	Education	*Education			`orm:"rel(one)"`
+//}
 
 type AlphaUser struct {
 	Id 			int
@@ -63,8 +63,8 @@ type AlphaUser struct {
 	Username 	string
 	PhoneNum 	string
 	Profile  	*Profile	`orm:"rel(one)"`
-	CreditCard	*CreditCard	`orm:"rel(fk)"`
-	Resume		*Resume		`orm:"rel(one)"`
+	//CreditCard	*CreditCard	`orm:"rel(fk)"`
+	//Resume		*Resume		`orm:"rel(one)"`
 }
 
 func (this *AlphaUser) Login() bool {
@@ -80,16 +80,18 @@ func (this *AlphaUser) Login() bool {
 	}
 }
 
-func (this *AlphaUser) Signup() (int64, bool) {
+func (this *AlphaUser) Signup() bool {
 	o := orm.NewOrm()
+	this.Profile = new(Profile)
 	if o.Using("user") == nil {
-		id, err := o.Insert(this)
-		if err == nil {
-			return id, true
+		_, err1 := o.Insert(this.Profile)
+		_, err2 := o.Insert(this)
+		if err1 == nil || err2 == nil {
+			return true
 		} else {
-			return id, false
+			return false
 		}
 	} else {
-		return -1, false
+		return false
 	}
 }

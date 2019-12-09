@@ -25,33 +25,20 @@ func (u *AlphaUserController) Login() {
 	if u.GetString("verificationCode") == constant.Alpha_accessCode {
 		if user.Login() {
 			//print(feedback.Login_success+"\n")
-			logger.Log_Success_Console(user.PhoneNum, ip)
+			logger.Log_login_success_console(user.PhoneNum, ip)
 		} else {
 			//print(feedback.Login_fail_no_user+"1"+"\n")
-			logger.Log_Fail_Console(user.PhoneNum, ip)
+			logger.Log_login_fail_console(user.PhoneNum, ip)
+			if user.Signup() {
+				logger.Log_signup_success_console(user.PhoneNum, ip)
+				logger.Log_login_success_console(user.PhoneNum, ip)
+			} else {
+				logger.Log_signup_fail_console(user.PhoneNum, ip)
+			}
 		}
 	} else {
 		//print(feedback.Login_fail_no_user+"2"+"\n")
-		logger.Log_Fail_Console(user.PhoneNum, ip)
-	}
-	u.ServeJSON()
-}
-
-func (u *AlphaUserController) Signup() {
-	user := new(models.AlphaUser)
-	user.PhoneNum = u.GetString("phoneNum")
-	ip := u.Ctx.Input.IP()
-	if u.GetString("verificationCode") == constant.Alpha_accessCode {
-		if user.Login() {
-			//print(feedback.Login_success+"\n")
-			logger.Log_Success_Console(user.PhoneNum, ip)
-		} else {
-			//print(feedback.Login_fail_no_user+"1"+"\n")
-			logger.Log_Fail_Console(user.PhoneNum, ip)
-		}
-	} else {
-		//print(feedback.Login_fail_no_user+"2"+"\n")
-		logger.Log_Fail_Console(user.PhoneNum, ip)
+		logger.Log_login_fail_console(user.PhoneNum, ip)
 	}
 	u.ServeJSON()
 }

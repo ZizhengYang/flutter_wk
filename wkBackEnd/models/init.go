@@ -10,6 +10,7 @@ func init()  {
 	_ = orm.RegisterDataBase("default", "mysql", sql.Set_mysql_wk("wk_admin"))
 	_ = orm.RegisterDataBase("user", "mysql", sql.Set_mysql_wk("wk_user"))
 	//_ = orm.RegisterDataBase("company", "mysql", sql.Set_mysql_wk("wk_company"))
-	orm.RegisterModel(new(Profile), new(CreditCard), new(Education), new(CompanyExperience), new(Resume), new(AlphaUser))
+	orm.RegisterModel(new(Profile), new(AlphaUser))
+	//orm.RegisterModel(new(Profile), new(CreditCard), new(Education), new(CompanyExperience), new(Resume), new(AlphaUser))
 	_ = orm.RunSyncdb("user", true, true)
 }
