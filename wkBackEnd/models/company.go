@@ -9,3 +9,43 @@ type Company struct {
 	CompanyLisence string
 	CompanyBankAccout string
 }
+
+
+
+// The method is actually only checking if the company is in the database
+func (this *Company) Login() bool {
+	o := orm.NewOrm()
+	if o.Using("small_money") == nil {       // o.Using("databaseName") returns the error
+		if o.Read(this) == nil {      // No error reading, meaing object exist in the database
+			return true
+		} else {     // Error,Not able to find the object in the databse, or object missing fk
+			return false
+		}
+	} else {      //  No error accessing the database
+		return false
+	}
+}
+
+
+
+
+func (this *Company) Signup() bool {
+	o := orm.NewOrm()
+	// this.Profile = new(Profile)       // creating new profile
+	if o.Using("small_money") == nil {     // o.Using("databaseName") returns the error
+		// _, err1 := o.Insert(this.Profile)
+		_, err2 := o.Insert(this)     
+		if err2 == nil{     // No error inserting into the the database table
+			return true
+		} else {      //some error inserting into the database table
+			return false 
+		}
+		// if err1 == nil && err2 == nil {
+		// 	return true
+		// } else {
+		// 	return false
+		// }
+	} else {       // error accessing the databser
+		return false
+	}
+}

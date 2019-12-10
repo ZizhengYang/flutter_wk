@@ -82,19 +82,19 @@ func (this *AlphaUser) Login() bool {
 
 
     // 三个返回参数依次为：是否新创建的，对象 Id 值，错误
-	if created, id, err := o.ReadOrCreate(&user, "Name"); err == nil {
-		if created {
-			fmt.Println("New Insert an object. Id:", id)
-		} else {
-			fmt.Println("Get an object. Id:", id)
-		}
-	}
+	// if created, id, err := o.ReadOrCreate(&user, "Name"); err == nil {
+	// 	if created {
+	// 		fmt.Println("New Insert an object. Id:", id)
+	// 	} else {
+	// 		fmt.Println("Get an object. Id:", id)
+	// 	}
+	// }
 
 
 
 
 
-
+// The method is actually only checking if the company is in the database
 func (this *AlphaUser) Signup() bool {
 	o := orm.NewOrm()
 	this.Profile = new(Profile)

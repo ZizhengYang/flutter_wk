@@ -18,6 +18,7 @@ type AlphaUserController struct {
 // @Success 200 {int} models.User.Id
 // @Failure 403 body is empty
 // @router / [post]
+
 func (u *AlphaUserController) Login() {
 	user := new(models.AlphaUser)
 	user.PhoneNum = u.GetString("phoneNum")
