@@ -69,7 +69,7 @@ type AlphaUser struct {
 
 func (this *AlphaUser) Login() bool {
 	o := orm.NewOrm()
-	if o.Using("user") == nil {
+	if o.Using("small_money") == nil {       // o.Using("databaseName") returns the error
 		if o.Read(this) == nil {
 			return true
 		} else {
@@ -80,13 +80,28 @@ func (this *AlphaUser) Login() bool {
 	}
 }
 
+
+    // 三个返回参数依次为：是否新创建的，对象 Id 值，错误
+	if created, id, err := o.ReadOrCreate(&user, "Name"); err == nil {
+		if created {
+			fmt.Println("New Insert an object. Id:", id)
+		} else {
+			fmt.Println("Get an object. Id:", id)
+		}
+	}
+
+
+
+
+
+
 func (this *AlphaUser) Signup() bool {
 	o := orm.NewOrm()
 	this.Profile = new(Profile)
-	if o.Using("user") == nil {
+	if o.Using("small_money") == nil {     // o.Using("databaseName") returns the error
 		_, err1 := o.Insert(this.Profile)
 		_, err2 := o.Insert(this)
-		if err1 == nil || err2 == nil {
+		if err1 == nil && err2 == nil {
 			return true
 		} else {
 			return false
@@ -94,4 +109,38 @@ func (this *AlphaUser) Signup() bool {
 	} else {
 		return false
 	}
+}
+
+
+
+
+
+
+func (this *AlphaUser) LoginOrSignUp() int {
+	o := orm.NewOrm()
+	this.Profile = new(Profile)
+	if o.Using("small_money") == nil {
+		_, err1 := o.Insert(this.Profile)     // insert the profile object into profile table 
+		_, err2 := o.Insert(this)             // insert the user object into user table
+
+		if err1 == nil && err2 == nil {           // there's no error inserting both object into the tables
+
+		if created, id, err := o.ReadOrCreate(this); err == nil {      // no error reading or creating user object
+			if created {
+				fmt.Println("New Insert an object. Id:", id)
+			} else {
+				fmt.Println("Get an object. Id:", id)
+			}
+		} else {
+			return 4        // 4 means error whene reading or creating user object
+		}
+
+		} else {
+			return 3       // 3 means there's error inserting the two objects into the tables 
+		}
+
+	} else {
+		return 2          // 2 means there's something wrong with accessing the database
+	}
+
 }
