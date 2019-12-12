@@ -5,6 +5,20 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+
+//-----------------------------------------Data models for Users
+
+// Testing User AlphaUser
+type AlphaUser struct {
+	Id 			int
+	Avatar 	 	string
+	Username 	string
+	PhoneNum 	string
+	Profile  	*Profile	`orm:"rel(one)"`
+	//CreditCard	*CreditCard	`orm:"rel(fk)"`
+	//Resume		*Resume		`orm:"rel(one)"`
+}
+
 type Profile struct {
 	Id			int
 	Gender  	string
@@ -15,6 +29,105 @@ type Profile struct {
 	Intro 		string
 	AlphaUser	*AlphaUser	`orm:"reverse(one)"`
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type User struct {
+	Id 		int
+
+	UserProfile *UserProfile `orm:"null;rel(one);on_delete(set_null)"`   // One User one profile, On_delete Set null
+	Supervisor  *Supervisor  `orm:"null;rel(one);on_delete(set_null)"`   // ONe User one superviosr, On_delete set null
+	Skill  []*Skill `orm:"rel(m2m)"`     // Many to Many with Photos
+}
+
+
+type Skill struct {
+	Id			int
+
+	Skill []*Skill `orm:"reverse(many)"`    // Reverse of Many to Many with Users
+}
+
+
+
+type Supervisor struct {
+	Id			int
+
+	User *User `orm:"reverse(one)"`    // One to One relationship, One Supervisor can be used only one user 
+}
+
+
+type UserProfile struct {
+	Id			int
+
+	DesignWall *DesignWall  `orm:"null;rel(one);on_delete(set_null)"`   // One UserProfile one DesignWall,on_delete Set null
+	Education	*Education	`orm:"rel(fk)"`    // One to Many relationship with Education, One UserProfile many educations
+	Experience	*Experience	`orm:"rel(fk)"`    // One to Many relationship with Experience, One UserProfile many Experiences
+	
+	User *User `orm:"reverse(one)"`    // One to One relationship, One UserProfile can be used only one user 
+}
+
+type DesignWall struct {
+	Id			int
+
+	Photo  []*Photo `orm:"rel(m2m)"`     // Many to Many with Photo
+
+	UserProfile *UserProfile `orm:"reverse(one)"`    // One to One relationship, One DesignWall can be used only one UserProfile 
+}
+
+type Photos struct {
+	Id			int
+
+	DesignWall []*DesignWall `orm:"reverse(many)"`    // Reverse of Many to Many with DesignWall
+}
+
+
+type Education struct {
+	Id			int
+
+	UserProfile []*UserProfile `orm:"reverse(many)"`    // Many to One relationship with UserProfile
+}
+
+type Experience struct {
+	Id			int
+
+	UserProfile []*UserProfile `orm:"reverse(many)"`    // Many to One relationship with UserProfile
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //type CreditCard struct {
 //	Id 			int
@@ -57,15 +170,33 @@ type Profile struct {
 //	Education	*Education			`orm:"rel(one)"`
 //}
 
-type AlphaUser struct {
-	Id 			int
-	Avatar 	 	string
-	Username 	string
-	PhoneNum 	string
-	Profile  	*Profile	`orm:"rel(one)"`
-	//CreditCard	*CreditCard	`orm:"rel(fk)"`
-	//Resume		*Resume		`orm:"rel(one)"`
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------  Functions related to the User Models
 
 func (this *AlphaUser) Login() bool {
 	o := orm.NewOrm()
