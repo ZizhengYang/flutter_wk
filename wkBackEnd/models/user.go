@@ -3,6 +3,9 @@ package models
 import (
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
+	ArticleModels "wkBackEnd/models/article.go"
+
+
 )
 
 
@@ -52,26 +55,46 @@ type Profile struct {
 
 
 
-
+// User has two relationship with skills????? how to deal
 type User struct {
 	Id 		int
 
 	UserProfile *UserProfile `orm:"null;rel(one);on_delete(set_null)"`   // One User one profile, On_delete Set null
 	Supervisor  *Supervisor  `orm:"null;rel(one);on_delete(set_null)"`   // ONe User one superviosr, On_delete set null
-	Skill  []*Skill `orm:"rel(m2m)"`     // Many to Many with Photos
+
+	FavoriteSkills  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
+	Skill  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
+	FavoriteArticles  []*Article `orm:"rel(m2m)"`     // Many to Many with Articles
+	ArticlePosted	*Article	`orm:"rel(fk)"`    // One to Many relationship with Articles, One user many published articles
+	CreditCard  []*CreditCard `orm:"rel(m2m)"`     // Many to Many with Credit Cards
+
+	FavoriteOfSuperviosr []*Supervisor `orm:"reverse(many)"`    // Reverse of Many to Many with FavoriteSkills
 }
 
 
 type Skill struct {
 	Id			int
 
-	Skill []*Skill `orm:"reverse(many)"`    // Reverse of Many to Many with Users
+	FavoriteOfUsers []*User `orm:"reverse(many)"`    // Reverse of Many to Many with FavoriteSkills
+	User []*User `orm:"reverse(many)"`    // Reverse of Many to Many with Users
 }
 
+
+type CreditCard struct {
+	Id 			int
+	CardName	string
+	CardNum		string
+	expDate		string
+	SecurityNum	string
+	
+	User	[]*User	`orm:"reverse(many)"`         // Many to Many with the users  
+}
 
 
 type Supervisor struct {
 	Id			int
+
+	FavoriteUsers  []*User `orm:"rel(m2m)"`     // Many to Many with Users
 
 	User *User `orm:"reverse(one)"`    // One to One relationship, One Supervisor can be used only one user 
 }
@@ -116,6 +139,12 @@ type Experience struct {
 
 
 
+
+
+
+// favaorite Task
+// Feedbacks(should be inside of a task)
+// ListofTasksDone
 
 
 

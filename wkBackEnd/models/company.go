@@ -1,5 +1,12 @@
 package models
 
+import (
+	"github.com/astaxie/beego/orm"
+	_ "github.com/go-sql-driver/mysql"
+	UserModels "wkBackEnd/models/user.go"
+)
+
+
 type Company struct {
 	Id       int
 	Email    string
@@ -9,6 +16,40 @@ type Company struct {
 	CompanyLisence string
 	CompanyBankAccout string
 }
+
+
+
+
+
+
+//-----------------------------------------Data models for Tasks
+
+
+
+type CompanyUser struct {
+	Id       int
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-------------------------------------------------  Functions related to the Company Models
+
 
 
 
