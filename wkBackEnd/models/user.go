@@ -62,12 +62,16 @@ type User struct {
 	UserProfile *UserProfile `orm:"null;rel(one);on_delete(set_null)"`   // One User one profile, On_delete Set null
 	Supervisor  *Supervisor  `orm:"null;rel(one);on_delete(set_null)"`   // ONe User one superviosr, On_delete set null
 
+	ArticlePosted	*Article	`orm:"rel(fk)"`    // One to Many relationship with Articles, One user many published articles
+	ListOfTask_UserSupervisorAsUser	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One user many Task_UserSupervisor done by the user
+
+
 	FavoriteSkills  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
 	Skill  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
 	FavoriteArticles  []*Article `orm:"rel(m2m)"`     // Many to Many with Articles
-	ArticlePosted	*Article	`orm:"rel(fk)"`    // One to Many relationship with Articles, One user many published articles
-	ListOfTask_UserSupervisorAsUser	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One user many Task_UserSupervisor done by the user
 	CreditCard  []*CreditCard `orm:"rel(m2m)"`     // Many to Many with Credit Cards
+	ListOfQucikTask  []*QucikTask `orm:"rel(m2m)"`     // Many to Many with QucikTask
+
 
 	FavoritedBySuperviosr []*Supervisor `orm:"reverse(many)"`    // Reverse of Many to Many with Supervisors, users liked by the supervisors
 	FavoritedByCompany []*CompanyUser `orm:"reverse(many)"`    // Reverse of Many to Many with CompanyUser, users liked by the CompanyUser

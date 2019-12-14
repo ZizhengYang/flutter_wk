@@ -29,7 +29,8 @@ type Company struct {
 type CompanyUser struct {
 	Id       int
 
-	ListOfTask_CompanySupervisorAsCompany	*Task_CompanySupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_CompanySupervisor, One Compnay many Task_CompanySupervisor for this Company
+	ListOfTask_CompanySupervisorPosted	*Task_CompanySupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_CompanySupervisor, One Compnay many Task_CompanySupervisor for this Company
+	ListOfQucikTaskPosted	*QucikTask	`orm:"rel(fk)"`    // One to Many relationship with QucikTask, One CompanyUser many published QucikTask
 
 	FavoriteSupervisors  []*Supervisor `orm:"rel(m2m)"`     // Many to Many with Supervisor
 	FavoriteUsers  []*User `orm:"rel(m2m)"`     // Many to Many with User

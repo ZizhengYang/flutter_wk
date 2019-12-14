@@ -150,3 +150,20 @@ type Feedback_C_to_S struct {
 
 }
 
+
+
+
+
+
+
+//-----------------------------------------3. Qucik task
+
+type QucikTask struct {
+	Id 		int
+
+	
+	UserWhoDoesQuickTask []*User `orm:"reverse(many)"`    // Reverse of Many to Many with User
+	QuickTaskPoster []*CompanyUser `orm:"reverse(many)"`    // Reverse of Many to Many with CompanyUser
+
+
+}
