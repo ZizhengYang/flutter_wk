@@ -29,6 +29,11 @@ type Company struct {
 type CompanyUser struct {
 	Id       int
 
+	ListOfTask_CompanySupervisorAsCompany	*Task_CompanySupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_CompanySupervisor, One Compnay many Task_CompanySupervisor for this Company
+
+	FavoriteSupervisors  []*Supervisor `orm:"rel(m2m)"`     // Many to Many with Supervisor
+	FavoriteUsers  []*User `orm:"rel(m2m)"`     // Many to Many with User
+
 
 }
 

@@ -66,9 +66,12 @@ type User struct {
 	Skill  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
 	FavoriteArticles  []*Article `orm:"rel(m2m)"`     // Many to Many with Articles
 	ArticlePosted	*Article	`orm:"rel(fk)"`    // One to Many relationship with Articles, One user many published articles
+	ListOfTask_UserSupervisorAsUser	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One user many Task_UserSupervisor done by the user
 	CreditCard  []*CreditCard `orm:"rel(m2m)"`     // Many to Many with Credit Cards
 
-	FavoriteOfSuperviosr []*Supervisor `orm:"reverse(many)"`    // Reverse of Many to Many with FavoriteSkills
+	FavoritedBySuperviosr []*Supervisor `orm:"reverse(many)"`    // Reverse of Many to Many with Supervisors, users liked by the supervisors
+	FavoritedByCompany []*CompanyUser `orm:"reverse(many)"`    // Reverse of Many to Many with CompanyUser, users liked by the CompanyUser
+
 }
 
 
@@ -77,6 +80,10 @@ type Skill struct {
 
 	FavoriteOfUsers []*User `orm:"reverse(many)"`    // Reverse of Many to Many with FavoriteSkills
 	User []*User `orm:"reverse(many)"`    // Reverse of Many to Many with Users
+	Task_UserSupervisor []*Task_UserSupervisor `orm:"reverse(many)"`    // Reverse of Many to Many with Task_UserSupervisor
+	Task_CompanySupervisor []*Task_CompanySupervisor `orm:"reverse(many)"`    // Reverse of Many to Many with Task_CompanySupervisor, skills required to do Task_CompanySupervisor
+
+
 }
 
 
@@ -95,8 +102,14 @@ type Supervisor struct {
 	Id			int
 
 	FavoriteUsers  []*User `orm:"rel(m2m)"`     // Many to Many with Users
+	ListOfTask_UserSupervisorAsSupervisor	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One supervisor many Task_UserSupervisor for this onsite supervisor
+	ListOfTask_CompanySupervisorAsSupervisor	*Task_CompanySupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_CompanySupervisor, One supervisor many Task_CompanySupervisor for this onsite supervisor
+
 
 	User *User `orm:"reverse(one)"`    // One to One relationship, One Supervisor can be used only one user 
+	User *Task_UserSupervisor `orm:"reverse(one)"`    // One to One relationship, One Supervisor can be used only one user 
+	FavoritedByCompany []*CompanyUser `orm:"reverse(many)"`    // Reverse of Many to Many with CompanyUser, supervisors liked by the CompanyUser
+
 }
 
 
