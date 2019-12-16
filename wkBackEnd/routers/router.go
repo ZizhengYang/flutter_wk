@@ -13,6 +13,10 @@ import (
 	"github.com/astaxie/beego"
 )
 
+
+// For more layers of routing layers, add extra layer of beego.NSNamespace()
+// beego.NSNamespace() is like sub folders
+// router is like the actual file
 func init() {
 	user := beego.NewNamespace("/user",
 		beego.NSNamespace("/alpha_user",

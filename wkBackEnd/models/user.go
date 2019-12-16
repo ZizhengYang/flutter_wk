@@ -244,16 +244,19 @@ type Experience struct {
 
 //-------------------------------------------------  Functions related to the User Models
 
-func (this *AlphaUser) Login() bool {
+// false, false  ------> error accessing the database
+// false, true  ------> can access database but no such user
+// false, false  ------> can access database and user existed in the database
+func (this *AlphaUser) Login() (bool, bool) {
 	o := orm.NewOrm()
 	if o.Using("small_money") == nil {       // o.Using("databaseName") returns the error
-		if o.Read(this) == nil {
-			return true
-		} else {
-			return false
+		if o.Read(this) == nil {      // no error 
+			return true, true
+		} else {                    
+			return false, true
 		}
-	} else {
-		return false
+	} else {         // Error
+		return false, false
 	}
 }
 
