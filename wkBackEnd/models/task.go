@@ -32,12 +32,14 @@ import (
 type Task_UserSupervisor struct {
 	Id 		int
 
-	Comment_U_to_S *Comment_U_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Comment_U_to_S, On_delete Set null
-	Comment_S_to_U *Comment_S_to_U `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Comment_S_to_U, On_delete Set null
-	Rating_U_to_S *Rating_U_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Rating_U_to_S, On_delete Set null
-	Rating_S_to_U *Rating_S_to_U `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Rating_S_to_U, On_delete Set null
-	Feedback_U_to_S *Feedback_U_to_S `orm:"null;rel(one);on_delete(set_null)"`   // Task_UserSupervisor User one Feedback_U_to_S, On_delete Set null
-	Feedback_S_to_U *Feedback_S_to_U `orm:"null;rel(one);on_delete(set_null)"`   // Task_UserSupervisor User one Feedback_S_to_U, On_delete Set null
+
+	// one Task_UserSupervisor many Task_CompanySupervisor
+	//Comment_U_to_S *Comment_U_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Comment_U_to_S, On_delete Set null
+	// Comment_S_to_U *Comment_S_to_U `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Comment_S_to_U, On_delete Set null
+	// Rating_U_to_S *Rating_U_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Rating_U_to_S, On_delete Set null
+	//Rating_S_to_U *Rating_S_to_U `orm:"null;rel(one);on_delete(set_null)"`   // One Task_UserSupervisor one Rating_S_to_U, On_delete Set null
+	//Feedback_U_to_S *Feedback_U_to_S `orm:"null;rel(one);on_delete(set_null)"`   // Task_UserSupervisor User one Feedback_U_to_S, On_delete Set null
+	// Feedback_S_to_U *Feedback_S_to_U `orm:"null;rel(one);on_delete(set_null)"`   // Task_UserSupervisor User one Feedback_S_to_U, On_delete Set null
 
 	SkillsRequiredForTask  []*Skill `orm:"rel(m2m)"`     // Many to Many with between Task_UserSupervisor and Skills
 
@@ -109,9 +111,9 @@ type Feedback_S_to_U struct {
 type Task_CompanySupervisor struct {
 	Id 		int
 
-	Comment_C_to_S *Comment_C_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_CompanySupervisor one Comment_C_to_S, On_delete Set null
-	Rating_C_to_S *Rating_C_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_CompanySupervisor one Rating_C_to_S, On_delete Set null
-	Feedback_C_to_S *Feedback_C_to_S `orm:"null;rel(one);on_delete(set_null)"`   // Task_CompanySupervisor User one Feedback_C_to_S, On_delete Set null
+	// Comment_C_to_S *Comment_C_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_CompanySupervisor one Comment_C_to_S, On_delete Set null
+	//Rating_C_to_S *Rating_C_to_S `orm:"null;rel(one);on_delete(set_null)"`   // One Task_CompanySupervisor one Rating_C_to_S, On_delete Set null
+	//Feedback_C_to_S *Feedback_C_to_S `orm:"null;rel(one);on_delete(set_null)"`   // Task_CompanySupervisor User one Feedback_C_to_S, On_delete Set null
 
 	SkillsRequiredForTask  []*Skill `orm:"rel(m2m)"`     // Many to Many with between Task_UserSupervisor and Skills
 	

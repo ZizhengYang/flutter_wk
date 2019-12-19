@@ -58,19 +58,20 @@ type Profile struct {
 type User struct {
 	Id 		int
 
-	UserProfile *UserProfile `orm:"null;rel(one);on_delete(set_null)"`   // One User one profile, On_delete Set null
-	Supervisor  *Supervisor  `orm:"null;rel(one);on_delete(set_null)"`   // ONe User one superviosr, On_delete set null
 
-	ArticlePosted	*Article	`orm:"rel(fk)"`    // One to Many relationship with Articles, One user many published articles
-	ListOfTask_UserSupervisorAsUser	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One user many Task_UserSupervisor done by the user
+	// UserProfile *UserProfile `orm:"null;rel(one);on_delete(set_null)"`   // One User one profile, On_delete Set null
+	// Supervisor  *Supervisor  `orm:"null;rel(one);on_delete(set_null)"`   // ONe User one superviosr, On_delete set null
+
+	//ArticlePosted	*Article	`orm:"rel(fk)"`    // One to Many relationship with Articles, One user many published articles
+	//ListOfTask_UserSupervisorAsUser	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One user many Task_UserSupervisor done by the user
 
 
-	FavoriteSkills  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
-	Skill  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
-	FavoriteArticles  []*Article `orm:"rel(m2m)"`     // Many to Many with Articles
-	CreditCard  []*CreditCard `orm:"rel(m2m)"`     // Many to Many with Credit Cards
-	ListOfQucikTask  []*QucikTask `orm:"rel(m2m)"`     // Many to Many with QucikTask
-
+	//FavoriteSkills  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
+	//Skill  []*Skill `orm:"rel(m2m)"`     // Many to Many with skills
+	//FavoriteArticles  []*Article `orm:"rel(m2m)"`     // Many to Many with Articles
+	//CreditCard  []*CreditCard `orm:"rel(m2m)"`     // Many to Many with Credit Cards
+	//ListOfQucikTask  []*QucikTask `orm:"rel(m2m)"`     // Many to Many with QucikTask
+	// ?? FavoriteUserSupervisorTask
 
 	FavoritedBySuperviosr []*Supervisor `orm:"reverse(many)"`    // Reverse of Many to Many with Supervisors, users liked by the supervisors
 	FavoritedByCompany []*CompanyUser `orm:"reverse(many)"`    // Reverse of Many to Many with CompanyUser, users liked by the CompanyUser
@@ -104,10 +105,10 @@ type CreditCard struct {
 type Supervisor struct {
 	Id			int
 
-	FavoriteUsers  []*User `orm:"rel(m2m)"`     // Many to Many with Users
-	ListOfTask_UserSupervisorAsSupervisor	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One supervisor many Task_UserSupervisor for this onsite supervisor
-	ListOfTask_CompanySupervisorAsSupervisor	*Task_CompanySupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_CompanySupervisor, One supervisor many Task_CompanySupervisor for this onsite supervisor
-
+	// ListOfTask_UserSupervisorAsSupervisor	*Task_UserSupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_UserSupervisor, One supervisor many Task_UserSupervisor for this onsite supervisor
+	// ListOfTask_CompanySupervisorAsSupervisor	*Task_CompanySupervisor	`orm:"rel(fk)"`    // One to Many relationship with Task_CompanySupervisor, One supervisor many Task_CompanySupervisor for this onsite supervisor
+	// FavoriteUsers  []*User `orm:"rel(m2m)"`     // Many to Many with Users
+	// ???? FavoriteTask_CompanySupervisor
 
 	User *User `orm:"reverse(one)"`    // One to One relationship, One Supervisor can be used only one user 
 	User *Task_UserSupervisor `orm:"reverse(one)"`    // One to One relationship, One Supervisor can be used only one user 
@@ -119,9 +120,9 @@ type Supervisor struct {
 type UserProfile struct {
 	Id			int
 
-	DesignWall *DesignWall  `orm:"null;rel(one);on_delete(set_null)"`   // One UserProfile one DesignWall,on_delete Set null
-	Education	*Education	`orm:"rel(fk)"`    // One to Many relationship with Education, One UserProfile many educations
-	Experience	*Experience	`orm:"rel(fk)"`    // One to Many relationship with Experience, One UserProfile many Experiences
+	//DesignWall *DesignWall  `orm:"null;rel(one);on_delete(set_null)"`   // One UserProfile one DesignWall,on_delete Set null
+	// Education	*Education	`orm:"rel(fk)"`    // One to Many relationship with Education, One UserProfile many educations
+	// Experience	*Experience	`orm:"rel(fk)"`    // One to Many relationship with Experience, One UserProfile many Experiences
 	
 	User *User `orm:"reverse(one)"`    // One to One relationship, One UserProfile can be used only one user 
 }
@@ -129,7 +130,7 @@ type UserProfile struct {
 type DesignWall struct {
 	Id			int
 
-	Photo  []*Photo `orm:"rel(m2m)"`     // Many to Many with Photo
+	//Photo  []*Photo `orm:"rel(m2m)"`     // Many to Many with Photo
 
 	UserProfile *UserProfile `orm:"reverse(one)"`    // One to One relationship, One DesignWall can be used only one UserProfile 
 }
