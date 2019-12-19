@@ -9,8 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.oracle.tools.packager.Log;
+
 import xiaoqian.repository.UserRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+
+@Slf4j        // Adding this, you can use log.info and output your announcement in the console
 @Controller // This means that this class is a Controller
 @RequestMapping(path="/user") // This means URL's start with /demo (after Application path)
 public class UserController {
@@ -20,4 +26,6 @@ public class UserController {
 	@Autowired 
 	private UserRepository userRepository;
   
+	
+	
 }
