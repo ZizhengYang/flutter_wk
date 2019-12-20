@@ -1,7 +1,13 @@
 import 'dart:ui';
 
+import 'package:cupertino_tabbar/cupertino_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:test_wai_kuai/Examples/Basic_Animation_Demo.dart';
+import 'package:test_wai_kuai/Examples/ExampleCustomMenu.dart';
+import 'package:test_wai_kuai/Examples/Test.dart';
+import 'package:test_wai_kuai/Examples/TwoLevel_Refresh.dart';
+import 'package:test_wai_kuai/Examples/cupertino_tabbar.dart';
+import 'package:test_wai_kuai/Examples/example_hidden_drawer.dart';
 import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Login.dart';
 import 'package:test_wai_kuai/Pages/CompanySide/LoginRegister/Register.dart';
 import 'package:test_wai_kuai/Pages/UserSide/LoginType/PhoneLogin.dart';
@@ -169,7 +175,7 @@ class HomeContentState extends State<HomeContent> with SingleTickerProviderState
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         // WechatLogin()
-        new PopIconButton_RoundedSquare(image: 'assets/images/messager/035-wechat.png', size: 80, top: 300, text: " 微 信 登 录 ", target: HomeScreen(), margin: 20, tag: "wechat"),
+        new PopIconButton_RoundedSquare(image: 'assets/images/messager/035-wechat.png', size: 80, top: 300, text: " 微 信 登 录 ", target: UserTaskPage2(), margin: 20, tag: "wechat"),
         new PopIconButton_RoundedSquare(image: 'assets/images/flatUI/telephone.png', size: 80, top: 300, text: " 电 话 登 录 ", target: PhoneLogin(), margin: 20, tag: "phone"),
 //        new PopIconButton_RoundedSquare_function_return(image: 'assets/images/flatUI/back.png', size: 80, top: 300, text: " 返 回 前 页 ", target: HomeContentChoices_from_ChooseLoginTypeChoices, margin: 0)
       ],
