@@ -35,7 +35,7 @@ public class Article {
 	// can not use Cascade --> That would mean, delete article will also delete user
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "postingUser_Id")
-    private User UserWhoPostedTheArticle;
+    private User userWhoPostedTheArticle;
 	
 	
 	// Users Who own this article

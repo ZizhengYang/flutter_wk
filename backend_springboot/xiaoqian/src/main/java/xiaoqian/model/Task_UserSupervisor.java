@@ -120,7 +120,7 @@ public class Task_UserSupervisor {
 	// can not use Cascade --> That would mean, delete task_UserSupervisor will also delete user
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userOnTheTask_Id")
-    private User UserOnTheTask;
+    private User userOnTheTask;
 	
 	
 	// ??????????? Do we add cascade.all

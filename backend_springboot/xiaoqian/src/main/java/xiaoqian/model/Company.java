@@ -43,6 +43,11 @@ public class Company {
     private List<QuickTask> ListOf_QucikTask_Posted;
     
     
+    // One company posted many Task_CompanyUser
+    // CascadeType.ALL: when the company object is updated/deleted, the Task_CompanyUser is updated/deleted
+    // Use lazy to prevent the list of Task_CompanyUser being fetched when the company is fetched
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "postingCompany",cascade = CascadeType.ALL)
+    private List<Task_CompanyUser> ListOf_Task_CompanyUser_Posted;
     
     
     

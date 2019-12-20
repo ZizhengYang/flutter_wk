@@ -74,17 +74,23 @@ public class User {
     // One user posted many Article
     // CascadeType.ALL: when the user object is updated/deleted, the article is updated/deleted
     // Use lazy to prevent the list of article being fetched when the user is fetched
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserWhoPostedTheArticle",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userWhoPostedTheArticle",cascade = CascadeType.ALL)
     private List<Article> articlesPosted;
     
     
 
     // One user can do many Task_UserSupervisor As user
-    // CascadeType.ALL: when the user object is updated/deleted, the article is updated/deleted
+    // CascadeType.ALL: when the user object is updated/deleted, the Task_UserSupervisor is updated/deleted
     // Use lazy to prevent the list of Task_UserSupervisor being fetched when the user is fetched
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "UserOnTheTask",cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userOnTheTask",cascade = CascadeType.ALL)
     private List<Task_UserSupervisor> ListOfTask_UserSupervisorAsUser;
     
+
+    // One user can do many Task_CompanyUser As user
+    // CascadeType.ALL: when the user object is updated/deleted, the Task_CompanyUser is updated/deleted
+    // Use lazy to prevent the list of Task_CompanyUser being fetched when the user is fetched
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "userOnTheTask",cascade = CascadeType.ALL)
+    private List<Task_CompanyUser> ListOfTask_CompanyUserAsUser;
     
 
     
@@ -191,7 +197,7 @@ public class User {
     // Many to many
     // Don't want delete cascade
     // That way, if user is deleted, related rows in user and middle table is delted 
-    // but not the skill table 
+    // but not the Task_UserSupervisor table 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {
             	CascadeType.DETACH,
@@ -205,6 +211,23 @@ public class User {
     private Set<Task_UserSupervisor> favorite_Task_UserSupervisor = new HashSet<>();
     
 
+    // User's favorite Task_CompanyUser
+    // Many to many
+    // Don't want delete cascade
+    // That way, if user is deleted, related rows in user and middle table is deleted 
+    // but not the Task_CompanyUser table 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+            	CascadeType.DETACH,
+                CascadeType.PERSIST,
+                CascadeType.REFRESH,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "user_favorite_taskCompanyUser",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "task_CompanyUser_id") })
+    private Set<Task_CompanyUser> favorite_Task_CompanyUser = new HashSet<>();
+    
 
 
     
