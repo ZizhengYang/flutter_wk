@@ -16,9 +16,13 @@ type CompanyController struct {
 // @Success 200 {int} models.Company.Id
 // @Failure 403 body is empty
 // @router / [post]
+
 func (c *CompanyController) Login() {
+	
 	company := new(models.Company)
-	company.Email = ""
+	company.Email = c.GetString("Email")
+	ip := c.Ctx.Input.IP()
+	if
 }
 
 // @Title CreateUser

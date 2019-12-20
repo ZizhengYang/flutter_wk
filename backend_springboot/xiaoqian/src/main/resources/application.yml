@@ -1,0 +1,169 @@
+#The port where the app will run on 
+#This is set to match the 外网
+
+# When we finally got the 企业账号
+# We will get a new AppID and AppSecret 
+# We need to change the document to match the new config
+wechat:
+ mpAppId: wx34869c55a3af117b
+ mpAppSecret: 07bc2f3033711008df9c5c5b5315a310
+
+project-url:
+ wechatMpAuthorize: http://cbtesting.natapp1.cc
+ wechatOpenAuthorize: http://cbtesting.natapp1.cc
+ 
+ # Redis properties
+spring:
+
+ redis:
+  host: 192.168.1.167
+  port: 6379
+  
+ datasource:
+  driverClassName: com.mysql.cj.jdbc.Driver
+  url: jdbc:mysql://localhost:3306/xiao_qian
+  username: root
+  password: 1995111241003cs
+  
+ jpa:
+  generate-ddl: true
+  hibernate:
+   ddl-auto: update
+   use-new-id-generator-mappings: false   # this ensure that, when the id is auto generated, table "hibernate_sequence" will not be gnereated
+
+
+# !!!!!! Pretty important 
+# Hibernate
+
+# The SQL dialect makes Hibernate generate better SQL for the chosen database
+# spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+
+# Hibernate ddl auto (create, create-drop, validate, update)
+# spring.jpa.hibernate.ddl-auto = update
+
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type=TRACE
+
+
+#datasource:
+# driverClassName: com.mysql.cj.jdbc.Driver
+# url: jdbc:mysql://localhost:3306/xiao_qian
+# username: root
+# password: 1995111241003cs 
+
+# Second datasource for PostgreSQL  
+# datasource:
+#  driverClassName: org.postgresql.Driver
+#  url: jdbc:postgresql://localhost:5432/careerbook?verifyServerCertificate=false&useSSL=false&requireSSL=false&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+#  username: postgres
+#  password: Pass_word1
+# jpa: 
+#  generate-ddl: true
+#  hibernate: 
+#   ddl-auto: update
+#  properties: 
+#   hibernate:
+#    jdbc:
+#     lob:
+#      non_contextual_creation: true 
+  # Causing PL_CLASS not found 
+  #properties:
+   #hibernate:
+    #dialect: org.hibernate.dialect.PostgreSQLDialect
+  
+  
+  
+  
+  
+# App Properties
+careerbook:
+ app:
+  jwtSecret: jwtCareerBookSecretKey
+  jwtExpiration: 86400
+ 
+# file upload  
+# max file size 
+ servlet:  
+    multipart:
+      max-file-size: 10MB
+      # max request size
+      max-request-size: 10MB 
+
+# files storage location (stores all files uploaded via REST API)
+storage:
+ location: ./uploads 
+  
+#   Another possible solution starting from next line
+#  数据库驱动配置
+#spring.datasource.url=jdbc:mysql://localhost:3306/sms?characterEncoding=utf-8
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+#spring.datasource.username=root
+#spring.datasource.password=123456
+#扫描映射文件
+#mybatis.mapper-locations=classpath:mapper/*Mapper.xml
+#redis配置
+#spring.redis.host=192.168.1.167
+#spring.redis.port=6379
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#------------------ another sample application.yml from a good sample project below----------------
+
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://127.0.0.1/sell?characterEncoding=utf-8&useSSL=false
+#  jpa:
+#    show-sql: true
+#  jackson:
+#    default-property-inclusion: non_null
+#  redis:
+#    host: 127.0.0.1
+#    port: 6379
+#server:
+#  context-path: /sell
+##logging:
+##  pattern:
+##    console: "%d - %msg%n"
+###  path: F://日志
+##  file: F://日志/sell.log
+##  level:
+##    com.imooc.LoggerTest: debug
+#
+## 下面是微信相关的配置
+#wechat:
+##  mpAppId: wxdcf91e9f784bfad0
+##  mpAppSecret: c467c06d98a2447f5ddef6ca8f47f268 #测试号appId,appSecret
+#  mpAppId: wxd898fcb01713c658
+#  mpAppSecret: xxxxxxxxx #借用号appId,appSecret
+##  openAppId: wx6ad144e54af67d87
+##  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #开放平台测试号appId,appSecret
+#  openAppId: wx6ad144e54af67d87
+#  openAppSecret: 91a2ff6d38a2bbccfb7e9f9079108e2e #借用帐号appId,appSecret
+#  mchId: 1483469312
+#  mchKey: C5245D70627C1F8E9964D494B0735025
+#  keyPath: C:/Users/Administrator/Downloads/h5.p12
+#  notifyUrl: http://sqmax.natapp1.cc/notify
+#  templateId:
+#    orderStatus: GoCullfix05R-rCibvoyI87ZUg50cyieKA5AyX7pPzo
+#
+#projectUrl:
+#  wechatMpAuthorize: http://sqmax.natapp1.cc
+#  wechatOpenAuthorize: http://sqmax.natapp1.cc
+#  sell: http://sqmax.natapp1.cc
+
+ 
