@@ -22,6 +22,4 @@ public class CompanyController {
 	@Autowired 
 	private CompanyRepository companyRepository ;
  
-	
-	
 }

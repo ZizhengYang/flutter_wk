@@ -29,9 +29,7 @@ public class CreditCard {
   
  
     
-    
-  
-	
+
 	// Users Who own this creditcard
 	@ManyToMany(fetch = FetchType.LAZY,
 		cascade = {
@@ -43,5 +41,17 @@ public class CreditCard {
 		mappedBy = "creditCards")
 		private Set<User> usersWhoOwnTheCreditCard = new HashSet<>();
 
-		    
+	
+	
+	// Companies Who own this creditcard
+	@ManyToMany(fetch = FetchType.LAZY,
+		cascade = {
+		CascadeType.PERSIST,
+		CascadeType.MERGE,
+		CascadeType.REFRESH,
+		CascadeType.MERGE
+		},
+		mappedBy = "creditcards")
+		private Set<Company> companiesWhoOwnTheCreditCard = new HashSet<>();
+ 
 }

@@ -45,11 +45,11 @@ public class Company {
     
     // One company posted many Task_CompanyUser
     // CascadeType.ALL: when the company object is updated/deleted, the Task_CompanyUser is updated/deleted
-    // Use lazy to prevent the list of Task_CompanyUser being fetched when the company is fetched
+    // Use lazy to prevent the list of Task_CompanyUser being fetched when the company is fetche    
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "postingCompany",cascade = CascadeType.ALL)
     private List<Task_CompanyUser> ListOf_Task_CompanyUser_Posted;
     
-    
+
     
     
     
@@ -92,6 +92,30 @@ public class Company {
             joinColumns = { @JoinColumn(name = "company_id") },
             inverseJoinColumns = { @JoinColumn(name = "user_id") })
     private Set<User> favoriteUsers = new HashSet<>();
+    
+    
+    
+    // Company's credit cards on file
+    // Many to many
+    // Don't want delete cascade
+    // That way, if company is deleted, related rows in company and middle table is delted 
+    // but not the creditcard table 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+            	CascadeType.DETACH,
+                CascadeType.PERSIST,
+                CascadeType.REFRESH,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "company_creditcard",
+            joinColumns = { @JoinColumn(name = "company_id") },
+            inverseJoinColumns = { @JoinColumn(name = "creditcard_id") })
+    private Set<CreditCard> creditcards = new HashSet<>();
+    
+    
+    
+    
+    
     
     
     

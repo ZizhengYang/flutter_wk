@@ -89,6 +89,32 @@ public class Skill {
 
 	    
 	
+		  // A to B : B
+		  // Categories that required this skills
+		 	@ManyToMany(fetch = FetchType.LAZY,
+		 	cascade = {
+		 	CascadeType.PERSIST,
+		 	CascadeType.MERGE,
+		 	CascadeType.REFRESH,
+		     CascadeType.MERGE
+		 	},
+		 	mappedBy = "relatedSkills")
+		 	private Set<Category> categoryThatRequire = new HashSet<>();
+
+		
+
+		 	  // A to B : B
+		 	  // Task_Companyuser that require this skill
+		 	 	@ManyToMany(fetch = FetchType.LAZY,
+		 	 	cascade = {
+		 	 	CascadeType.PERSIST,
+		 	 	CascadeType.MERGE,
+		 	 	CascadeType.REFRESH,
+		 	     CascadeType.MERGE
+		 	 	},
+		 	 	mappedBy = "requiredSkills")
+		 	 	private Set<Task_CompanyUser> Task_CompanyUserThatRequire = new HashSet<>();
+		
 	
 }
 

@@ -108,6 +108,25 @@ public class Task_UserSupervisor {
     
     
     
+    // Task's related subcategories
+    // Many to many
+    // Don't want delete cascade
+    // That way, if task is deleted, related rows in task and middle table is deleted 
+    // but not the subcategory table 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+            	CascadeType.DETACH,
+                CascadeType.PERSIST,
+                CascadeType.REFRESH,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "task_UserSupervisor_related_subcategory",
+            joinColumns = { @JoinColumn(name = "task_UserSupervisor_id") },
+            inverseJoinColumns = { @JoinColumn(name = "subcategory_id") })
+    private Set<Subcategory> listOfRelatedSubcategory = new HashSet<>();
+    
+	
+    
     
  
 

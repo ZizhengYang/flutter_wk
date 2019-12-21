@@ -69,7 +69,46 @@ public class Task_CompanyUser {
     private Feedback_C_to_U feedback_C_to_U;
     
 
+    // Task's required skills
+    // Many to many
+    // Don't want delete cascade
+    // That way, if task is deleted, related rows in task and middle table is deleted 
+    // but not the skill table 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+            	CascadeType.DETACH,
+                CascadeType.PERSIST,
+                CascadeType.REFRESH,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "task_CompanyUser_required_skills",
+            joinColumns = { @JoinColumn(name = "task_ComapnyUser_id") },
+            inverseJoinColumns = { @JoinColumn(name = "skill_id") })
+    private Set<Skill> requiredSkills = new HashSet<>();
+    
 	
+    // Task's related subcategories
+    // Many to many
+    // Don't want delete cascade
+    // That way, if task is deleted, related rows in task and middle table is deleted 
+    // but not the subcategory table 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+            	CascadeType.DETACH,
+                CascadeType.PERSIST,
+                CascadeType.REFRESH,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "task_CompanyUser_related_subcategory",
+            joinColumns = { @JoinColumn(name = "task_ComapnyUser_id") },
+            inverseJoinColumns = { @JoinColumn(name = "subcategory_id") })
+    private Set<Subcategory> listOfRelatedSubcategory = new HashSet<>();
+    
+	
+    
+    
+    
+    
  
     //--------------------Reversed Below------------------
     
