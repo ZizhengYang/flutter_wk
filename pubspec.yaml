@@ -22,70 +22,74 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^0.1.2
   json_annotation: ^3.0.0
   # Refresh packages
-  pull_to_refresh: ^1.5.7
+  pull_to_refresh: ^1.3.3
   # Loading
-  loading_animations: ^2.1.0
-  flutter_skeleton: ^0.1.0+1
-  skeleton_text: ^1.0.0
-  flutter_progress_hud: ^1.0.2
+#  loading_animations: ^2.1.0
+#  flutter_skeleton: ^0.1.0+1
+#  skeleton_text: ^1.0.0
+#  flutter_progress_hud: ^1.0.2
   # Fancy list-views
-  flutter_section_table_view: ^1.0.5
-  pull_to_reveal: ^0.0.1
-  loadany: ^0.1.2
-  story_view: ^0.11.0
-  reorder_tree_list: ^0.1.1
-  flutter_list_drag_and_drop: ^0.1.6
-  alphabet_list_scroll_view: ^1.0.5
-  json_listview: ^0.1.0
+#  flutter_section_table_view: ^1.0.5
+#  pull_to_reveal: ^0.0.1
+#  loadany: ^0.1.2
+#  story_view: ^0.11.0
+#  reorder_tree_list: ^0.1.1
+#  flutter_list_drag_and_drop: ^0.1.6
+#  alphabet_list_scroll_view: ^1.0.5
+#  json_listview: ^0.1.0
   # Panel
-  sliding_up_panel: ^0.3.6
-  paged_cards: ^1.0.2
-  rubber: ^0.4.0
+#  sliding_up_panel: ^0.3.6
+#  paged_cards: ^1.0.2
+#  rubber: ^0.4.0
   hidden_drawer_menu: ^1.1.2
   # Tinder
-  tinder_card: ^0.1.1
-  flutter_tindercard: ^0.1.8
+#  tinder_card: ^0.1.1
+#  flutter_tindercard: ^0.1.8
   # Swipe images
-  flutter_swiper: ^1.1.6
-  carousel_slider: ^1.3.0
+#  flutter_swiper: ^1.1.6
+#  carousel_slider: ^1.3.0
   # Raring
-  flutter_fluid_slider: ^1.0.2
-  sleek_circular_slider: ^1.0.7
-  flutter_rating_bar: ^3.0.0
+#  flutter_fluid_slider: ^1.0.2
+#  sleek_circular_slider: ^1.0.7
+#  flutter_rating_bar: ^3.0.0
   # Animation
-  flutter_staggered_animations: ^0.1.2
-  avatar_glow: ^1.1.0
-  custom_splash: ^0.0.2
-  flip_panel: ^1.0.1
-  wave: ^0.0.8
-  auto_animated: ^1.2.3
-  spring_button: ^1.0.13
-  universal_widget: ^1.2.5
+#  flutter_staggered_animations: ^0.1.2
+#  avatar_glow: ^1.1.0
+#  custom_splash: ^0.0.2
+#  flip_panel: ^1.0.1
+#  wave: ^0.0.8
+#  auto_animated: ^1.2.3
+#  spring_button: ^1.0.13
+#  universal_widget: ^1.2.5
   # Others
-  rate_my_app: ^0.4.0
+#  rate_my_app: ^0.4.0
   # Hardware
-  screenshot_callback: ^1.0.1
+#  screenshot_callback: ^1.0.1
   # QR
-  majascan: ^0.3.5
-  vibration: ^1.2.2
+  flutter_qr_reader: ^1.0.3
+  flutter_tab_bar_no_ripple: ^0.1.1
+  #fab_circular_menu: ^0.1.2
+#  majascan: ^0.3.5
+#  vibration: ^1.2.2
   # Chat
-  chatbar: ^0.0.7
+#  chatbar: ^0.0.7
   dash_chat: ^1.0.9
   # Icons
   mdi: ^0.2.2
+  line_icons: ^0.2.0
+  cupertino_icons: ^0.1.2
   # Tabbar
   cupertino_tabbar: ^1.0.1
-  bubble_tab_indicator: ^0.1.4
+#  bubble_tab_indicator: ^0.1.4
   # Bottom bar
   ff_navigation_bar: ^0.1.2
-  bubbled_navigation_bar: ^0.0.4
+#  bubbled_navigation_bar: ^0.0.4
   # Credit card
-  flutter_card_selector: ^0.1.0
+#  flutter_card_selector: ^0.1.0
   # Search box
-  floating_search_bar: ^0.2.0
+#  floating_search_bar: ^0.2.0
   # Not using packages
     #  english_words: ^3.1.0
     #  sms: ^0.2.0

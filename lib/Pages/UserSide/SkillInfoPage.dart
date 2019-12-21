@@ -105,7 +105,6 @@ class SkillInfoPage extends StatelessWidget {
 //  State<StatefulWidget> createState() => new UserTaskAppBarState();
 //
 //  @override
-//  // TODO: implement preferredSize
 //  Size get preferredSize => Size.fromHeight(height);//这里设置控件（appBar）的高度
 //
 //}

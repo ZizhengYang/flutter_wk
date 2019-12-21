@@ -1,20 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/hidden_drawer/hidden_drawer_menu.dart';
-
-
-//class LoginHelp extends StatelessWidget {
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return new Scaffold(
-//      appBar: new AppBar(),
-//      drawer: new Drawer(),
-//      body: new Container(color: Colors.white),
-//    );
-//  }
-//
-//}
 
 class Screen1 extends StatelessWidget {
   @override
@@ -42,7 +27,7 @@ class Screen2 extends StatelessWidget {
   }
 }
 
-class LoginHelp extends StatelessWidget {
+class ExampleHiddenDrawer extends StatelessWidget {
 
   final List<ScreenHiddenDrawer> itens = [
     ScreenHiddenDrawer(
