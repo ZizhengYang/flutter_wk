@@ -229,7 +229,28 @@ public class User {
     private Set<Task_CompanyUser> favorite_Task_CompanyUser = new HashSet<>();
     
 
+    // User's interested field/subcategory
+    // Many to many
+    // Don't want delete cascade
+    // That way, if user is deleted, related rows in user and middle table is delted 
+    // but not the subcategory table 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+            	CascadeType.DETACH,
+                CascadeType.PERSIST,
+                CascadeType.REFRESH,
+                CascadeType.MERGE
+            })
+    @JoinTable(name = "user_interested_subcategories",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "subcategory_id") })
+    private Set<Subcategory> interestedSubcategories = new HashSet<>();
+    
 
+    
+    
+    
+    
     
 	//------------------------------Reversed Below---------------
 
