@@ -5,8 +5,8 @@
 # We will get a new AppID and AppSecret 
 # We need to change the document to match the new config
 wechat:
- mpAppId: wx34869c55a3af117b
- mpAppSecret: 07bc2f3033711008df9c5c5b5315a310
+ mpAppId: wx9104039805d015c0
+ mpAppSecret: 42cc50bea743815a5dee661e4b6b04bf
 
 project-url:
  wechatMpAuthorize: http://cbtesting.natapp1.cc
@@ -23,7 +23,7 @@ spring:
   driverClassName: com.mysql.cj.jdbc.Driver
   url: jdbc:mysql://localhost:3306/xiao_qian
   username: root
-  password: 1995111241003cs
+  password: 20001008
   
  jpa:
   generate-ddl: true
