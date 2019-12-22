@@ -5,6 +5,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.validation.constraints.Email;
 import java.io.Serializable;
@@ -29,6 +31,17 @@ public class User {
     @Column(name = "id")
     private Long id;
 
+    @Column(unique = true, name = "phoneNum")
+    @NotFound(action = NotFoundAction.EXCEPTION)
+    private String openid;
+
+    @Column(unique = true, name = "phoneNum")
+    @NotFound(action = NotFoundAction.EXCEPTION)
+    private String phoneNum;
+
+    @Email
+    @Column(unique = true, name = "email")
+    private String email;
 //    These are the constrains can be used on the attributes    
 //    @NotNull
 //    @Email

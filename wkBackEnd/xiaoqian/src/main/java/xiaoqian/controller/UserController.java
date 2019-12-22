@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import org.springframework.web.client.RestTemplate;
+import xiaoqian.model.User;
 import xiaoqian.repository.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -62,6 +63,16 @@ public class UserController {
 		restTemplate = new RestTemplate();
 		reponse = restTemplate.getForObject(pullinfoUrl, String.class);
 		json = new JSONObject(reponse);
+	}
+
+	@RequestMapping(value="/phone/insert")
+	public User insertPhone(@RequestParam("phoneNum") String phoneNum) throws JSONException {
+		return userRepository.findByPhoneNum(phoneNum);
+	}
+
+	@RequestMapping(value="/phone/login")
+	public void loginPhone(@RequestParam("phone") String code) throws JSONException {
+
 	}
 
 }
