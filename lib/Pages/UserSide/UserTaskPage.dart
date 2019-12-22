@@ -1,21 +1,26 @@
-import 'package:cupertino_tabbar/cupertino_tabbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tab_bar_no_ripple/flutter_tab_bar_no_ripple.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:test_wai_kuai/Pages/UserSide/Task/CategoryTask.dart';
+import 'package:test_wai_kuai/Util/Clipper/AppBarClipper.dart';
+
+import 'Task/EasyMoneyTask.dart';
+import 'Task/HotTask.dart';
+import 'Task/RecommendationTask.dart';
 
 class UserTaskPage extends StatefulWidget {
-
   @override
   UserTaskPageState createState() => UserTaskPageState();
 }
 
-class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderStateMixin {
-
+class UserTaskPageState extends State<UserTaskPage>
+    with SingleTickerProviderStateMixin {
   /// constants:
   ///
   static const _searchReminder = "搜索 职业/教程/朋友";
+  final Key linkKey = GlobalKey();
 
   /// Data using in the project:
   /// TODO: 求文案求文案求文案，我实在不行了......
@@ -29,10 +34,25 @@ class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderSta
   /// [_category_list_category] is a list original categories for [CategoryTask]
   /// TODO: support user personalized categories list
   ///
-  List<String> _category_list_recommend = ["关注","猜你","推荐"];
-  List<String> _category_list_hot = ["本地火爆","大势所趋","异军突起","热潮未退","路在何方"];
-  List<String> _category_list_easy = ["调查问卷","机器学习","抢先试用","征短文"];
-  List<String> _category_list_category = ["互联网","设计","软件","咨询","金融","健身","文案","工程","媒体","建模","语言","建筑","管理","调研"];
+  List<String> _category_list_recommend = ["关注", "猜你", "推荐"];
+  List<String> _category_list_hot = ["本地火爆", "大势所趋", "异军突起", "热潮未退", "路在何方"];
+  List<String> _category_list_easy = ["调查问卷", "机器学习", "抢先试用", "征短文"];
+  List<String> _category_list_category = [
+    "互联网",
+    "设计",
+    "软件",
+    "咨询",
+    "金融",
+    "健身",
+    "文案",
+    "工程",
+    "媒体",
+    "建模",
+    "语言",
+    "建筑",
+    "管理",
+    "调研"
+  ];
 
   /// tab controllers:
   ///
@@ -86,7 +106,8 @@ class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderSta
 
   @override
   void initState() {
-    _controller = TabController(vsync: this, length: this._category_list_recommend.length);
+    _controller = TabController(
+        vsync: this, length: this._category_list_recommend.length);
     _scrollController = ScrollController();
     _refreshController = RefreshController(initialRefresh: false);
     super.initState();
@@ -103,9 +124,9 @@ class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderSta
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      drawer: generateDrawer(),
-      appBar: generateAppBar(),
-      body: generateBody(),
+      drawer: this.generateDrawer(),
+      appBar: this.generateAppBar(),
+      body: this.generateScrollView(),
     );
   }
 
@@ -118,78 +139,120 @@ class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderSta
             new Icon(icon, color: Color(0xFF2D3447)),
             new Text(text),
           ],
-        )
-    );
+        ));
+  }
+
+  List<Widget> generateCategoryWidgetCategory() {
+    List<Widget> ret = new List<Widget>();
+    _category_list_category.forEach((value) {
+      ret.add(new Tab(text: value));
+    });
+    return ret;
+  }
+
+  List<Widget> generateCategoryWidgetHot() {
+    List<Widget> ret = new List<Widget>();
+    _category_list_hot.forEach((value) {
+      ret.add(new Tab(text: value));
+    });
+    return ret;
+  }
+
+  List<Widget> generateCategoryWidgetEasy() {
+    List<Widget> ret = new List<Widget>();
+    _category_list_easy.forEach((value) {
+      ret.add(new Tab(text: value));
+    });
+    return ret;
+  }
+
+  List<Widget> generateCategoryWidgetRecommend() {
+    List<Widget> ret = new List<Widget>();
+    _category_list_recommend.forEach((value) {
+      ret.add(new Tab(text: value, icon: null));
+    });
+    return ret;
+  }
+
+  List<Widget> generateTabView() {
+    return <Widget>[
+      new RecommendationTask(this.linkKey),
+      new HotTask(),
+      new EasyMoneyTask(),
+//      new CategoryTask(),
+    ];
   }
 
   Widget generateDrawer() {
     return new Drawer(
-      child: new Column(
-        children: <Widget>[
-          new Container(
-            width: 300,
-            height: 80,
-            color: Colors.green,
-          ),
-          new Container(
-            width: 300,
-            height: 80,
-            color: Colors.blue,
-          ),
-          new Container(
-            width: 300,
-            height: 80,
-            color: Colors.black,
-          ),
-          new Container(
-            width: 300,
-            height: 80,
-            color: Colors.red,
-          ),
-          new Container(
-            width: 300,
-            height: 80,
-            color: Colors.yellow,
-          ),
-          new Container(
-            width: 300,
-            height: 80,
-            color: Colors.pink,
-          ),
-          new Container(
-            width: 300,
-            height: 80,
-            color: Colors.purple,
-          )
-        ],
-      )
+//        child: new Column(
+//      children: <Widget>[
+//        new Container(
+//          width: 300,
+//          height: 80,
+//          color: Colors.green,
+//        ),
+//        new Container(
+//          width: 300,
+//          height: 80,
+//          color: Colors.blue,
+//        ),
+//        new Container(
+//          width: 300,
+//          height: 80,
+//          color: Colors.black,
+//        ),
+//        new Container(
+//          width: 300,
+//          height: 80,
+//          color: Colors.red,
+//        ),
+//        new Container(
+//          width: 300,
+//          height: 80,
+//          color: Colors.yellow,
+//        ),
+//        new Container(
+//          width: 300,
+//          height: 80,
+//          color: Colors.pink,
+//        ),
+//        new Container(
+//          width: 300,
+//          height: 80,
+//          color: Colors.purple,
+//        )
+//      ],
+//    )
     );
   }
 
   Widget generateRefresher() {
-    return new SmartRefresher(
-        enablePullDown: true,
-        enablePullUp: false,
-        header: WaterDropMaterialHeader(backgroundColor: Color(0xFF2D3447), color: Color.fromARGB(255, 248, 130, 0), distance: 40),
-        controller: _refreshController,
-        scrollController: _scrollController,
-        onRefresh: _onRefresh,
-        onLoading: _onLoading,
-        child: buildList(0),
-//        generateScrollView()
-    );
+    return this.generateScrollView();
+//    return new SmartRefresher(
+//      enablePullDown: true,
+//      enablePullUp: false,
+//      header: WaterDropMaterialHeader(
+//          backgroundColor: Color(0xFF2D3447),
+//          color: Color.fromARGB(255, 248, 130, 0),
+//          distance: 40),
+//      controller: _refreshController,
+//      scrollController: _scrollController,
+//      onRefresh: _onRefresh,
+//      onLoading: _onLoading,
+//      child: buildList(0),
+//    );
   }
 
-  ///
   Widget generateAppBar() {
     return new AppBar(
       elevation: 0,
       backgroundColor: Color(0xFF2D3447),
       title: generateSearchBox(),
+//      title: new SimpleLinkBar(key: linkKey),
       actions: <Widget>[
         new PopupMenuButton<String>(
-          itemBuilder: (BuildContext context) =>
-          <PopupMenuItem<String>>[
+          itemBuilder: (BuildContext context) => <PopupMenuItem<String>>[
             this.SelectView(Icons.add_to_photos, '发起群聊', 'A'),
             this.SelectView(Icons.group_add, '添加服务', 'B'),
             this.SelectView(Icons.cast_connected, '扫一扫码', 'C'),
@@ -206,6 +269,7 @@ class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderSta
           },
         )
       ],
+//      bottom: new PreferredSize(child: new SimpleLinkBar(key: linkKey), preferredSize: Size(MediaQuery.of(context).size.width,0)),
     );
   }
 
@@ -217,52 +281,51 @@ class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderSta
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(15)),
         ),
-        child: Row(
-            children: <Widget>[
-              SizedBox(width: 5),
-
-              Icon(
-                Icons.search,
-                size: 24,
-                color: Colors.grey[400],
-              ),
-
-              SizedBox(width: 10),
-
-              Text(
-                  _searchReminder,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w300
-                  )
-              )
-            ])
-    );
+        child: Row(children: <Widget>[
+          SizedBox(width: 5),
+          Icon(
+            Icons.search,
+            size: 24,
+            color: Colors.grey[400],
+          ),
+          SizedBox(width: 10),
+          Text(_searchReminder,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                  fontWeight: FontWeight.w300))
+        ]));
   }
 
-  void _onRefresh() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-    setState(() {});
-    _refreshController.refreshCompleted();
-  }
+//  void _onRefresh() async {
+//    await Future.delayed(Duration(milliseconds: 1000));
+//    setState(() {});
+//    _refreshController.refreshCompleted();
+//  }
 
-  void _onLoading() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-    setState(() {});
-    _refreshController.loadComplete();
-  }
+//  void _onLoading() async {
+//    await Future.delayed(Duration(milliseconds: 1000));
+//    setState(() {});
+//    _refreshController.loadComplete();
+//  }
 
-  Widget buildList(int num) => buildCard(context, num);
-  Widget buildCard(BuildContext context, int index) => generateScrollView();
+//  Widget buildList(int num) => buildCard(context, num);
+
+//  Widget buildCard(BuildContext context, int index) => generateScrollView();
+
 //  Widget buildCard(BuildContext context, int index) => new generateScrollView();//width: 300,height: 80,color: Colors.yellow,child: generateBody());//child: generateBody()
 
   Widget generateBody() {
-    return new Scrollbar(
-      child: generateRefresher(),
+    return new Column(
+      children: <Widget>[
+//        new SimpleLinkBar(key: linkKey),
+        this.generateScrollView(),
+      ],
     );
+//    return new SimpleLinkBar(key: linkKey);
+//    return this.generateRefresher();
   }
 
   Widget generateScrollView() {
@@ -275,24 +338,46 @@ class UserTaskPageState extends State<UserTaskPage> with SingleTickerProviderSta
           ),
           new SliverOverlapAbsorber(
               handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
-              child: new SliverAppBar(
-                backgroundColor: Colors.grey[100],
-                forceElevated: false,
-                pinned: true,
-                expandedHeight: 0,
-                titleSpacing: 0,
-                automaticallyImplyLeading: false,
+              child: new Container(
+                child: new SliverAppBar(
+                  backgroundColor: innerBoxIsScrolled ? Color(0xFF2D3447) : Colors.grey[100],
+//                  shape: RoundedRectangleBorder(
+//                      borderRadius: new BorderRadius.circular(18.0),
+//                      side: BorderSide(color: Colors.red)),
+                  forceElevated: false,
+                  pinned: true,
+                  expandedHeight: 0,
+                  titleSpacing: 0,
+                  automaticallyImplyLeading: false,
+                  title: new Container(
+                    alignment: Alignment.center,
+                    child: new TabBarNoRipple(
+                        controller: _controller,
+                        isScrollable: true,
+                        indicatorWeight: 2,
+                        indicatorPadding:
+                        EdgeInsets.only(left: 15, top: 0, right: 15, bottom: 0),
+                        indicatorColor: Colors.yellow[700],
+                        labelColor: Colors.yellow[700],
+                        unselectedLabelColor: Colors.grey,
+                        labelStyle:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        tabs: this.generateCategoryWidgetRecommend()),
+                  ),
+                )
               )
-          )
+              )
         ];
-      }, body: new Container(),
+      },
+      body: new TabBarView(
+        controller: _controller,
+          children: this.generateTabView()
+      ),
     );
   }
-
 }
 
 class MainPagePanel extends StatelessWidget {
-
   /// [height] and [width] described the size of panel
   ///
   double height;
@@ -331,15 +416,13 @@ class MainPagePanel extends StatelessWidget {
       width: this.width,
       height: this.height,
       decoration: new BoxDecoration(
-        borderRadius: BorderRadius.circular(0.1*(this.width+this.height))
-      ),
+          borderRadius:
+              BorderRadius.circular(0.1 * (this.width + this.height))),
     );
   }
-
 }
 
 class _MainPagePanelInfo {
-
   String name;
   String desc;
   String tag;
@@ -351,22 +434,20 @@ class _MainPagePanelInfo {
   Color tagColor;
   int num;
 
-  _MainPagePanelInfo(this.name, this.desc, this.tag, this.numDesc, this.icon, this.image, this.tagColor, this.num);
-
+  _MainPagePanelInfo(this.name, this.desc, this.tag, this.numDesc, this.icon,
+      this.image, this.tagColor, this.num);
 }
 
 class UserTaskPageFlexible extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() {
     return UserTaskPageFlexibleState();
   }
-
 }
 
 class UserTaskPageFlexibleState extends State<UserTaskPageFlexible> {
-
   int cupertinoTabBarValue = 3;
+
   int cupertinoTabBarValueGetter() => cupertinoTabBarValue;
 
   @override
@@ -374,46 +455,49 @@ class UserTaskPageFlexibleState extends State<UserTaskPageFlexible> {
     return new Stack(
       children: <Widget>[
         new Container(
-          height: 400,
-          decoration: BoxDecoration(
-              color: Colors.grey[100]
-          ),
+          height: 380,
+          decoration: BoxDecoration(color: Colors.grey[100]),
         ),
         new Container(
-            height: 140,
+            height: 120,
             decoration: new BoxDecoration(
                 color: Color(0xFF2D3447),
-                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5))
-            )
-        ),
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(5),
+                    bottomRight: Radius.circular(5)))),
         new Column(
           children: <Widget>[
             new Container(
-                width: 500,
-                padding: EdgeInsets.only(top: 30, left: 15, right: 15),
+              width: 500,
+              padding: EdgeInsets.only(top: 30, left: 15, right: 15),
 //                child: GenerateCupertinoTab()
             ),
             SizedBox(height: 20),
             new Container(
               width: 500,
               padding: EdgeInsets.only(top: 150),
-              margin: EdgeInsets.only(left: 30, right: 30),
-              decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 1.5, spreadRadius: 0.5)],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20)
-              ),
+              margin: EdgeInsets.only(left: 15, right: 15),
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.grey,
+                    offset: Offset(0.0, 0.5),
+                    blurRadius: 1.5,
+                    spreadRadius: 0.5)
+              ], color: Colors.white, borderRadius: BorderRadius.circular(20)),
             ),
             SizedBox(height: 20),
             new Container(
               width: 500,
+//              height: 400,
               padding: EdgeInsets.only(top: 150),
-              margin: EdgeInsets.only(left: 30, right: 30),
-              decoration: BoxDecoration(
-                  boxShadow: [BoxShadow(color: Colors.grey, offset: Offset(0.0, 0.5), blurRadius: 1.5, spreadRadius: 0.5)],
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(20)
-              ),
+              margin: EdgeInsets.only(left: 15, right: 15),
+              decoration: BoxDecoration(boxShadow: [
+                BoxShadow(
+                    color: Colors.grey,
+                    offset: Offset(0.0, 0.2),
+                    blurRadius: 1.5,
+                    spreadRadius: 0.5)
+              ], color: Colors.white, borderRadius: BorderRadius.circular(20)),
             ),
           ],
         )
@@ -421,60 +505,56 @@ class UserTaskPageFlexibleState extends State<UserTaskPageFlexible> {
     );
   }
 
-//  Widget GenerateCupertinoTab() {
-//    return new CupertinoTabBar.CupertinoTabBar(
-//      const Color(0xFFd4d7dd),
-//      const Color(0xFFf7f7f7),
-//      [
-//        const Text(
-//          "推荐",
-//          style: const TextStyle(
-//            color: Colors.black,
-//            fontSize: 18.75,
-//            fontWeight: FontWeight.w600,
-//            fontFamily: "SFProRounded",
-//          ),
-//          textAlign: TextAlign.center,
-//        ),
-//        const Text(
-//          "热门",
-//          style: const TextStyle(
-//            color: Colors.black,
-//            fontSize: 18.75,
-//            fontWeight: FontWeight.w600,
-//            fontFamily: "SFProRounded",
-//          ),
-//          textAlign: TextAlign.center,
-//        ),
-//        const Text(
-//          "快赚",
-//          style: const TextStyle(
-//            color: Colors.black,
-//            fontSize: 18.75,
-//            fontWeight: FontWeight.w600,
-//            fontFamily: "SFProRounded",
-//          ),
-//          textAlign: TextAlign.center,
-//        ),
-//        const Text(
-//          "分类",
-//          style: const TextStyle(
-//            color: Colors.black,
-//            fontSize: 18.75,
-//            fontWeight: FontWeight.w600,
-//            fontFamily: "SFProRounded",
-//          ),
-//          textAlign: TextAlign.center,
-//        ),
-//      ],
-//      cupertinoTabBarValueGetter,
-//          onTap: (int index) {
-//        setState(() {
-//          cupertinoTabBarValue = index;
-//        });
-//      },
-//      horizontalPadding: 8,
-//    );
-//  }
+}
 
+class SimpleLinkBar extends StatefulWidget {
+  SimpleLinkBar({Key key}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => _SimpleLinkBarState();
+}
+
+class _SimpleLinkBarState extends State<SimpleLinkBar>
+    with RefreshProcessor, SingleTickerProviderStateMixin {
+  RefreshStatus _status = RefreshStatus.idle;
+  AnimationController _animationController;
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    _animationController = AnimationController(vsync: this);
+    super.initState();
+  }
+
+  @override
+  Future endRefresh() {
+    _animationController.animateTo(0.0, duration: Duration(milliseconds: 300));
+    return Future.value();
+  }
+
+  @override
+  void onOffsetChange(double offset) {
+    if (_status != RefreshStatus.refreshing)
+      _animationController.value = offset / 80.0;
+    super.onOffsetChange(offset);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ScaleTransition(
+      child: CupertinoActivityIndicator(),
+      scale: _animationController,
+    );
+  }
+
+  @override
+  void onModeChange(RefreshStatus mode) {
+    super.onModeChange(mode);
+    _status = mode;
+    setState(() {});
+  }
 }

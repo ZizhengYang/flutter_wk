@@ -6,15 +6,20 @@ import 'package:flutter/material.dart';
 import 'package:hidden_drawer_menu/controllers/hidden_drawer_controller.dart';
 import 'package:hidden_drawer_menu/hidden_drawer/hidden_drawer_menu.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:test_wai_kuai/Examples/dsadsadjs.dart';
 import 'package:test_wai_kuai/Model/Model.dart';
 import 'package:test_wai_kuai/Model/Test.dart';
 import 'package:intl/intl.dart';
 
 class RecommendationTask extends StatefulWidget {
 
+  Key linkKey;
+
+  RecommendationTask(this.linkKey);
+
   @override
   State<StatefulWidget> createState() {
-    return RecommendationTaskState();
+    return RecommendationTaskState(linkKey);
   }
 
 }
@@ -22,6 +27,9 @@ class RecommendationTask extends StatefulWidget {
 class RecommendationTaskState extends State<RecommendationTask> with TickerProviderStateMixin {
 
   RefreshController _refreshController = RefreshController(initialRefresh: false);
+  Key linkKey;
+
+  RecommendationTaskState(this.linkKey);
 
   void _onRefresh() async{
     // monitor network fetch
@@ -59,7 +67,8 @@ class RecommendationTaskState extends State<RecommendationTask> with TickerProvi
       child: new SmartRefresher(
           enablePullDown: false,
           enablePullUp: true,
-          header: WaterDropMaterialHeader(backgroundColor: Color(0xFF2D3447), color: Color.fromARGB(255, 248, 130, 0), distance: 40),
+//          header: WaterDropMaterialHeader(backgroundColor: Color(0xFF2D3447), color: Color.fromARGB(255, 248, 130, 0), distance: 40),
+          header: new LinkHeader(linkKey: linkKey),
           footer: CustomFooter(
             builder: (BuildContext context,LoadStatus mode){
               Widget body ;
@@ -129,7 +138,7 @@ class RecommendationTaskState extends State<RecommendationTask> with TickerProvi
                     child: new RaisedButton(onPressed: () {Navigator.push(
                         context,
                         new MaterialPageRoute(
-                        builder: (context) => new MyHomePage()));}, child: new Text(
+                        builder: (context) => new LinkHeaderExample()));}, child: new Text(
                         s + "  人民币/每周",
                         style: TextStyle(wordSpacing: 4, fontSize: 16, color: Color.fromARGB(255, 248, 130, 0))
                     )),)
