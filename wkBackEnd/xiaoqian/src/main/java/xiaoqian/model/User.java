@@ -5,6 +5,10 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 import javax.validation.constraints.Email;
 import java.io.Serializable;
@@ -19,17 +23,51 @@ import java.util.Set;
 // !!!!!! use persist to save
 
 @Data            // With @Data, we don't need to write getter,setters
-
 @Entity
 @Table(name = "user")
 public class User {
+
+    public User() {};
      
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
-//    These are the constrains can be used on the attributes    
+    @Column(unique = true, name = "phoneNum")
+    @NotFound(action = NotFoundAction.EXCEPTION)
+    private String openid;
+
+    @Column(unique = true, name = "phoneNum")
+    @NotFound(action = NotFoundAction.EXCEPTION)
+    private String phoneNum;
+
+    @Email
+    @Column(unique = true, name = "email")
+    private String email;
+
+    @Column(unique = true, name = "avatar")
+    private String avatar;
+
+    @Column(unique = true, name = "username")
+    private String username;
+
+    @Column(unique = true, name = "gender")
+    private String gender;
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    //    These are the constrains can be used on the attributes
 //    @NotNull
 //    @Email
 //    @Size(max = 100)
