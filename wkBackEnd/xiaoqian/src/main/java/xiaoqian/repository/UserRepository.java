@@ -10,6 +10,8 @@ import xiaoqian.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
+    User save(User user);
+
     User findByPhoneNum(String phoneNum);
 
 }
